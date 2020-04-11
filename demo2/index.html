@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+	<meta charset="utf-8"/>
+	<meta name="HandheldFriendly" content="true"/>
+	<title>wip</title>
+  </head>
+  
+  <!--link rel="stylesheet" media="screen and (min-width: 200px) and (max-width: 400px)" href="style.css" /-->
+  <body>
+	<div id="fps"
+		 style = "position:relative;
+				  top:49vh; 
+				  text-align:center; 
+				  display:block;
+				  z-index:1;
+				  pointer-events: none;
+				  color:#fff;"><p>Click to play</p></div>
+
+	<!--div id="fps">Generating audio...</div-->
+	<canvas id=	"cv"
+			onclick="click_to_play();"
+			style="position:fixed;
+				   width:100%;
+				   height:100%;
+				   top:0;
+				   left:0;
+				   background-color:#000;"></canvas>
+	<!--script src="min.js" type="application/javascript"></script-->
+	<script src="main.js" type="application/javascript"></script>
+	<script src="music.js" type="application/javascript"></script>
+
+
+
+</html>

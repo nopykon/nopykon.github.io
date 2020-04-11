@@ -1,0 +1,278 @@
+<html>
+  <head>
+	<meta charset="UTF-8">
+	<meta name="HandheldFriendly" content="true"/>
+
+	<title>qristofer</title>
+
+	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"/>
+	<link rel="stylesheet" type="text/css" href="style.css" />
+  </head>
+  
+  <script>
+function scroll_to(x){window.scrollTo(0,document.getElementById(x).offsetTop);}
+function mouse_over(x){document.getElementById(x).style.color = "#fff" ;}
+function mouse_out(x){document.getElementById(x).style.color = "#eee" ;}
+  </script>
+  <body>
+
+
+	<!-- div id="banner">	</div -->
+	<div id="container">
+
+	  <!--div style="text-align:center;"-->
+	  <c style = "color:#fd0;"><b>Old abandoned site!</b></c>
+	  <h1>Kristoffer Gustavsson</h1>
+	  
+	  <!--p style="font-family: consolas; line-height:15px;">
+		_______/::/__<br>
+		______/::/___<br>
+		_____/::/_____<br>
+		____/::/______<br>
+Khula ; .. ;
+		</p-->
+	  
+	  <div 
+		 class="button" id="2D" 
+		 onmouseover="mouse_over('2D')" 
+		 onmouseout="mouse_out('2D')"  
+		 onclick="scroll_to('2D ART')">
+		<b>2D ART</b>
+	  </div>
+
+	  <div 
+		 class="button" id="PROJ" 
+		 onmouseover="mouse_over('PROJ')" 
+		 onmouseout="mouse_out('PROJ')"  
+		 onclick="scroll_to('PROJECTS')">
+		<b>PROJECTS</b>
+	  </div>
+
+	  <div 
+		 class="button" id="CON" 
+		 onmouseover="mouse_over('CON')" 
+		 onmouseout="mouse_out('CON')"  
+		 onclick="scroll_to('CONTACT')">
+		<b>CONTACT</b>
+	  </div>
+	  
+	  <!--h2 style="margin-top:0px; ">Hi there!</h2-->
+
+	  <table style="width:100%; text-align:left;">
+		<tr>
+		  <td style="width:48%; vertical-align:top; ">
+			<p><b>
+				I'm a game developer, artist and a bit of a music dabbler, located in Gothenburg, Sweden. 
+				It's my goal to create very cool games with excellent art and challanging but fun gameplay!
+			  </b>
+			  For code, I use C, C++, Javascript and 
+			  (a long time ago) Java. Some libraries I often use are openGL,
+			</p>
+		  </td>
+		  <td style="vertical-align:top;">
+			<p>
+			   GLFW, FMOD, openAL and SDL. I mostly use Gimp and Blender for 2D and 3D art.
+
+			 <b>Retro low-poly 3D-graphics</b>, as seen in D0S/PS1/N64-titles, are some of favorite things. Of course, I enjoy beautiful games and demos in many other styles.
+			</p>
+		  </td>
+		</tr>
+	  </table>
+
+
+	 
+	  
+	  <div id = "PROJECTS"></div>
+	  <h2>- PROJECTS -</h2>
+
+
+
+	  <h3>Currently working on...</h3>
+	  <p>
+		A minimalist rigid body physics engine in C that uses fixed point arithmetics only.
+	  </p>
+	  <img src="box.gif" class="image" alt="">
+	  <img src="rb_rays_g.gif" class="image" alt="">
+
+
+
+	  <h3>TIC-80 PROJECTS</h3>
+	  <p>TIC-80 is a fantasy console, much like PICO-8, that you can create small games and demos with.</p>
+	  <p><a href="https://nopykon.itch.io/3d-demo">Experiment #1</a></p>
+	  <img src="3DRACER.gif" class="image" alt="">
+
+	  <p><a href="https://tic.computer/play?cart=178">Experiment #2</a></p>
+	  <img src="walk.gif" class="image" alt="">
+
+	  <c>Both of these are software rendered using Lua code only... it's very slow, especially the web-versions where everything is converted to JS. 
+Since I created these, a new function has been added to TIC-80, called textri, which makes a lot of my render-code redundant.
+
+	  
+	  <h3>SOFTWARE RENDERING PROJECT <br>(YET ANOTHER)</h3>
+	  <p><!--An attempt to relive the glory days.-->
+		This engine is written in C, and it fills in polygons using the CPU only, 
+		like old DOS games such as Quake or Doom ( except I have an i7, not a 486 ). 
+		It uses a 16-bit framebuffer (rather than 256-colors) and no z-buffer. Only integers (fixed point) are used for graphics as well as physics calculations.
+
+		This style is very close to how old Playstation-games were rendered.
+		Unlike the PS1, perspective correction is performed at the start and end of each row of pixels within a 
+		triangle, and if needed, at every 16th pixel within the row.
+
+		(In the very last step, OpenGL is used to upscale the framebuffer.)
+		<img src="srfps.jpg" class="image" alt=""/>
+	  <!--img src="d0.png" class="image" alt="">
+	  <c>Gouraud shading and dither</c-->
+	  <img src="cycle2.gif" class="image" alt="">
+	  <c>The animations are interpolated over fixed physics time steps, untying the framerate from the simulation while still looking smooth.</c>
+	  <!--img src="cycle1.gif" class="image" alt=""-->
+
+
+
+	  <!--img src="ditherglitches.png" class="image" alt=""-->
+	  <img src="aug11.gif" class="image" alt="">
+	  <img src="CS.gif" class="image" alt="">
+	  <c>Cel-shading hack</c>
+
+	  <h3>LUDUM DARE #38</h3>
+	  <p>WebGL and JS were used to create this thing. As per usual for Ludum Dare, the game is incredibly unfinished. :D You can try it 
+		<a href="https://nopykon.github.io">here</a>. W to throttle, arrow keys or mouse to pitch and roll, A/D to yaw.
+		
+	  </p>
+	  <img src="ld38.png" class="image" alt="">
+
+	  <h3>LUDUM DARE #37</h3>
+	  <p style="text-align:left;">Flat-shaded software-renderer with vertex-lerpnimated things, all made in a weekend with C and Blender. Not much time left to make a good game after that. 
+		<a href="http://ludumdare.com/compo/author/qristofer/">Download here.</a>
+		</p>
+
+	  
+	  <img src="ld27.jpg" class="image" alt="">
+	  
+
+	  <h3>RASPBERRY PI PROJECT #1</h3>
+	  <p style="text-align:left;">For a while I tried to make platform game for Raspberry Pi Zero.
+		C++(98) and openGL ES2.0 were used for the engine.</p> 
+
+	  <img src="cade.jpg" class="image" alt="">
+	  <img src="sonic_spoof.jpg" class="image" alt="">
+
+
+	  <!--img src="character-doodles.jpg" class="image" alt="">
+	  <c>Character doodles for this project.</c>
+	  <img src="platform_concept_1.jpg" class="image" alt="">
+	  <c>Some more concept art for the project.</c-->
+
+
+	  <h3>CHINA TUNNELING</h3>
+	  <p>
+		A little game made for a Mini Ludum Dare.
+		<a href="http://ludumdare.com/compo/author/qristofer/">Download here.</a>
+	  <p>
+	  <img src="title.jpeg" class="image" alt="">
+	  <img src="CT.jpg" class="image" alt="">
+	  <!--img src="tnl_wide.jpeg" class="image" alt=""-->
+	  
+
+	  <h3>MAG64: Not the same flight game</h3>
+	  <p>
+		One of my first software rendering projects.
+		And one of my first Javascript projects. Did not get good framerates, but it worked.
+	  </p>
+	  <img src="mag64.png" class="image" alt="">
+	  <img src="https://thumbs.gfycat.com/CharmingOnlyCottontail-size_restricted.gif" class="image" alt="">
+	  <!--img src="fc.gif" class="image" alt=""-->
+
+	  
+	  <h3>NATTLUVAN</h3>
+	  <p>
+		A game for Android-phones (and Desktop) that only uses touch (or mouse) for input.
+		I never put it on Android market as I deemed it too unpolished. ¯\_(ツ)_/¯
+		You can <a href="https://nopykon.itch.io/nattluvan">download it here</a>, 
+		but do it only if you have Java installed.
+
+	  </p>
+	  <img src="android_game.jpg" class="image" alt="">
+	  <img src="https://img.itch.zone/aW1hZ2UvOTg4Ni8zMDYzMi5naWY=/original/Arwo%2FX.gif" class="image" alt="">
+	  	  <p style="text-align:left;">
+
+
+			
+	  <h3>An old project...</h3>
+	  <p>
+		Old engine attempt that used openGL3.3, Bullet Physics and Lua. 
+	  </p>
+	  <img src="fps_vye.jpg" class="image" alt="">
+	  
+
+	  <!-- 2D ART -->
+	  <div id = "2D ART"></div>
+	  <h2>- 2D ART -</h2>
+	  <p> Sometimes I draw. Not so often.</b>
+
+
+
+	  <a href="weputtx6.jpg">
+		<img src="weputtx6.jpg" class="image" alt="">
+	  </a>
+	  <c>Wipeout fanart<br><br></c>
+
+	  <a href="fps_painting.jpg">
+		<img src="fps_painting.jpg" class="image" alt="">
+	  </a>
+	  <c>FPS concept image from 2011<br><br></c>
+
+	  <a href="horse.jpg">
+		<img src="horse.jpg" class="image" alt="">
+	  </a>
+	  <c>Not sure what I did here<br><br></c>
+	  <!--img src="planes.jpg" class="image" alt=""-->
+	  
+	  <!--a href="just_a_painting.jpg">
+		<img src="just_a_painting.jpg" class="image" alt="">
+	  </a>
+	  <c>A place.</c-->
+
+	  <a href="spoof.jpg">
+		<img src="spoof.jpg" class="image" alt="">
+	  </a>
+	  <c>A quick mario spoof<br><br></c>
+
+
+	  <!--img src="planes.jpg" class="image" alt=""-->
+
+	  <!-- MUSIC >
+	  <h2>- MUSIC -</h2>
+	  <br>
+	  <p>Nothing! Yet. Things will go here soon...</p-->
+
+
+	  <!-- CONTACT -->
+	  <div id = "CONTACT"></div>
+	  <h2>- CONTACT -</h2>
+	  <br>
+	  <p>
+		Tweet at 
+		<b><a style="color:#fff" href="https://twitter.com/qristofer">
+			@qristofer</a></b>
+		or send an <b><a style="color:#fff" href="mailto:nopykon@gmail.com?Subject=Hello!">e-mail</a></b>
+	  </p>
+	  
+
+
+
+
+
+	  
+
+	</div>
+
+
+    <!--canvas id="canvas">
+		Your browser does not suppert html5</canvas--        
+		https://www.twitch.tv/videos/139704367
+		http://ludumdare.com/compo/author/qristofer/
+		
+-->
+
+  </body>
+</html>
