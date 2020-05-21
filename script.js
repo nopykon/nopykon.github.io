@@ -96,6 +96,7 @@ let games = section('games');
 let art = section('art');
 let music = section('music');
 let about = section('about');
+let tic = section('tic');
 
 
 
