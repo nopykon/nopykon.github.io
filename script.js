@@ -93,11 +93,10 @@ let code = section('programming');
 let projects = section('projects');
 let js13k = section('js13k');
 let games = section('games');
+let tic = section('tic');
 let art = section('art');
 let music = section('music');
 let about = section('about');
-let tic = section('tic');
-
 
 
 
