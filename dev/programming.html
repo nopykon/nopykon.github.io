@@ -1,0 +1,78 @@
+<br>
+
+<h3>Algorithms</h3>
+<p>I've studied and implemented various algorithms related to game-AI, rendering and collision detection, such as GJK, Bresnham, Dijkstra, A*, K-means, Cohen-Sutherland and Sutherland-Hodgman, etc. As well as various data structures such as Binary-Heaps, Linked-Lists, Bucket-Lists, BSPs and Octrees. Data structures are great, but nine times out of ten, I'll just use the array (and quite often, that's the best option).</p>
+
+<br>
+<h3>Optimization</h3>
+<p>Sometimes I'll "waste" my time optimizing some part of a program that really doesn't need it (or I'll just open up my favorite file, <i>ape.cpp</i>). I'll rewrite the same thing over and over, only to throw the results away and go back to the original. Because, it's interesting and fun, because I want to try things out, or because I want to practice. I don't think the ambition to write better and faster code is <i>evil</i>.<br>
+  <span style="padding-left:1.8em"/>Yes, I can agree with the famous Knuth quote to some degree. Early optimizations that cause your code to become less nimble and harder to read, are likely "evil". It also easy to waste time if you're trying to write optimal code for something you don't understand yet. But planning for good performance early on is not a bad idea. What are the things that need to happen in order for us to be able to work on this piece of software, in a manageable way, yet ensure that it won't end up as an incredibly sluggish final product? Those ad-hoc last-minute optimizations may not be enough.
+
+<!--p>One reason I care about performance, is that I've always been that poor guy with the old budget laptop. Tools that run slow on my machine makes me annoyed. Thanks for writing tools only rich people are allowed to use and sorry for not spending $1000/year on new hardware. It's one thing if some program actually does make use of high system requirements, like a game trying to push the limits. Or some really high end tool. I'm totally fine with that. However, if you're a student just trying to create a PDF, and some Adobe-program takes 5 minutes to launch, that is just wrong.</p>
+
+<p>If you're a woke hip software dude that wants to save trees and stuff, why are you forcing everyone to buy new hardware all the time, and why aren't you making your software more energy efficient and not a pain to use for the less fortunate? (My sympathies if you really are passionate about these things, but you're also stuck with webdev-tools.)</p-->
+
+
+<!-- Any future version of your software is going to have to be heavily re-designed, maybe to the degree that just starting over completetly is going to be the best option.</p
+
+p>There's so much slow software out there. Why is it that I can play this networked game at 144Hz, with incredible graphics, detailed physical simulation, complex-AI, just insane amounts of data being transformed every single frame; <i> and yet, my gmail inbox is near unuseable because of long load times, bugs, and a sluggish interface?</i><br>
+  <span style="padding-left:1.8em"/>The simple solution is that <b>more</b> optimization needs to happen, and probably in a smarter way. Better code needs to be written using better tools and better code management. Or things will remain the way they are now.</p
+
+ I don't spend most days writing performance critical code. 
+-->
+<br>
+
+<h3>On language</h3>
+<p>Often when making games, I find the help a language can provide to be marginal, compared to the difficulty of the <i>real</i> problem itself. The logical problem, the math problem or the design problem. The type of problem I can spend an entire week thinking about. Often it has little to do with language.<br>
+<span style="padding-left:1.8em"/>Once I've learned enough of a language to use it, I'm a happy coder. The disagreement I may have with any language is, on the whole, not <i>that</i> bothersome. The bottleneck is more likely to be <b>me</b>. That's not to say the choice of tools when making something doesn't matter. Or that the tools couldn't be much better.</p>
+
+<br>
+
+<h3>Languages</h3>
+<p><b>C</b> is probably my favorite language. I use it when I want more or less <i>exact</i> control over how a program behaves. Or when I just need low-level access. It has a limited set of features so it doesn't take up much headspace to use. It's abundant and it compiles quickly.</p>
+
+<p><b>C++</b> was the first language I learned, and one I still use a lot. My preference now would be to only use "the good parts" of the language, in a style not too remote from C. But it depends on the application. <br>
+  <span style="padding-left:1.8em"/>I do make use of <b>STL</b> and a modern set of C++-features for some of my programs. I can see how looking at some std::thing() from &lt;algorithm&gt; could be less stressful than looking at the nested loops <i>someone else</i> wrote. <!--RAII, operator overloading and the generic data structures are mostly good, but they can also be traps, and often harder ones to spot at that. std::map[std--> Anyhow, I don't want to rant about style here, and I'm not idealistic about it anyways. I'm happy to adapt and to try new things.</p>
+
+<p style="color:#fda;"><b>Rust? Jai?</b> There are things I would want better help with that C and C++ really doesn't do well. Better control over memory layout, being able to move between <a href="https://en.wikipedia.org/wiki/AoS_and_SoA"><i>AoS and SoA</i></a> without a ton of struggle. Or not having vectorization messed up all the time for silly reasons.</p>
+<br>
+<p><b>Python</b> has lately come to replace some of my C++-written tools in some tasks, thanks to Blender (and the fact that I've been getting more familiar with both Python and Blender). When it's possible, it's nicer to just export to the final format directly, compared to first exporting as Collada or Wavefront or some other intermediary format, before processing it in a separate program.</p>
+
+<p>I use <b>Javascript</b> for things like this website and the occasional browser game. I'm all for making games with HTML5 and WebGL. The site is written <i>purely</i> in Javascript, but if I continue to write as much web-code as I have been lately, I will have to find some better tools. I'm ogling Typescript for game development purposes.</p>
+
+<p>I like <b>Lua</b>. With the rise of Fantasy Consoles such as Pico-8, I've spent a fair amount of time with the language. My <b>FC</b> of choice is <b><a href="https://tic.computer/">TIC-80</a></b>, for which I've made a bunch of 3D-demos. Additionally, I've embedded Lua into some of my game engines for scripting purposes.</p><!-- But now, I'm more interested in creating own tiny scripting language. A project I've started and gotten a fair bit into... to replace Lua...  been temped to desing my own language for that purpose.</p-->
+
+<!--p>Using Emacs has mean writing macros in <b>Elisp</b> every now and then, but rarely enough that I've never gotten good at it. The same would go for a bunch of other languages I've dipped my toes into, out of curiosity (Rust,Haskell,Forth..) or temporary necessity (C#, Batch).</p-->
+
+<p>Finally, I want to mention <b>Java</b>, which I used a lot from about 2010 up until 2014, but never since. As I'm sure is the case for most programmers, there have been many languages I've only dipped my toes into, out of curiosity (Rust,Haskell,Forth) or temporary necessity (Elisp, C#, GML, GDscript...).</p>
+
+<h3>Programming environment</h3>
+<p>I use <b>Emacs</b> for most editing tasks, or notepad++. I've also used MSVS, Eclipse and Code::Blocks. I'm comfy with the <b>GNU Compiler Collection</b> (including the debugger). Compiler Explorer (<a href="https://godbolt.org">godbolt.org</a>) is another tool I've had great use of, and fun poking around with. Some libraries and APIs I'm familiar with include <b>GLFW</b>, <b>SDL</b>, <b>OpenGL</b>, <b>Bullet</b> (physics), <b>TinyXML</b>,  <b>OpenAL</b>, <b>Vorbis</b>, <b>libpng</b>, <b>pthread</b> and <b>TinyCThread</b>.</p>
+<br>
+
+<p>Thanks for reading!</p>
+<!--
+<p>The world of programming is fascinating. Since I've never been employed as a full-time programmer, or released any commersial products of my own, you could say that I've been mostly playing around. But playing is the best way to learn. My programming interest started with my need to understand how games works. And while I've always had ideas for commersial projects, as soon as I've learned enough to make one type of game, my curiosity for something more advanced sets in, and so I begin work on a more advanced project.
+
+There's a popo I've read articles like "Finish your damn games", and a few some other. Often there are points there I disagree with. To me, making games is exactly like painting. You should always strive to become an artist.
+
+ You wouln't complain to some artist that they weren't selling their art. Showing the works is good. Getting feedback is good. But you wouldn't tell an artist to "Finish your sketches and sell them!". But this is gettin off topic.
+
+  I've been fortunate in having had enough spare time to dive as deeply as I have. But yes, my ambition in the end is still to some day make a damn good game, and sell it.</p>
+
+I have a particular taste in games, and strong opinions about what I want out of a game. But that is another topic. 
+
+<p>Thanks for reading!</p-->
+
+
+
+
+<br>
+<br>
+<br>
+
+<div class="btn" onclick="code.toggle()">hide</div>
+
+<br>
+<br>
+
