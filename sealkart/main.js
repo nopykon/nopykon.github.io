@@ -1,8 +1,6 @@
 /*
 
- main.js
-
- get >back< at your neighbours?
+  main.js
 
 */
 let mouse_x = 0;
@@ -52,7 +50,7 @@ function texpol(image, vv)
     let ax = B[0]-A[0], ay = B[1]-A[1];
     let bx = C[0]-A[0], by = C[1]-A[1];
 
-	if( ax*by - ay*bx < 0 )//backface culling
+	if( ax*by - ay*bx < 0 )//cull backface
 		return;
 
     let au = B[2]-A[2], av = B[3]-A[3] ;
@@ -217,8 +215,6 @@ let edgen=[[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0]]
 
 function zlist_draw()
 {
-	
-
 	for( let i=0;i<zlist.length;++i)
 	{
 		let P = zlist[i] 
@@ -276,24 +272,16 @@ function drawMesh( o, bias ) //meshDraw
 		for( let j=0; j<vc;++j)
 		{
 			let p = tp[ Iv[ i + STRIDE*j	+ 0 ]  ]
-
 			
 			if( p[3] )
 				inn = true;
-			
 			let u = Tv[ Iv[ i + STRIDE*j	+ 1 ]  ]
 			zmin = min(zmin, p[2])
 			pl.push([p[0],p[1],u[0],u[1],0])
-			// let bu = Tv[ Iv[ i + 3*1	+ 2 ]  ]
-			// let cu = Tv[ Iv[ i + 3*2	+ 2 ]  ]
-			// let avg = min(a[2], min( b[2], c[2]) )
-			//zlist.push([[a[0],a[1],au[0],au[1], avg]),[b[0],b[1],bu[0],bu[1]],[c[0],c[1],cu[0],cu[1]] ])
 		}
-
 		i += STRIDE * vc  ; 
-		
-		if( inn )
-		{
+
+		if( inn ){
 			pl[0][4] = zmin + bias;
 			zlist.push(pl)
 		}
@@ -309,10 +297,8 @@ function drawMesh( o, bias ) //meshDraw
 let cz = 0, czv = 0 ;
 let cx = 0, cxv = 0
 let cy = 0, cyv = 0
-
 function game_step()
 {
-
 	cx += cxv
 	cy += cyv
 	cz += czv
@@ -321,7 +307,6 @@ function game_step()
 		cxv = ((mouse_nx*2-1) - cx) * .1
 		cyv = ((mouse_ny*2-1) - cy) * .1
 		czv = (1 - cz )*.1
-		//cyv = cy - (mouse_ny*2-1)* SSS
 	}
 	else
 	{
@@ -329,10 +314,6 @@ function game_step()
 		cyv = (0 - cy) * .1
 		czv = (0 - cz )*.1
 	}
-	//
-	// let ax = (key(RIGHT)-key(LEFT))*.01
-	// let ay = (key(UP)-key(DOWN))*.01
-	// if( keyp(SPACE) )
 }
 
 function noise(p)
@@ -356,14 +337,9 @@ function wave( p, x, y ){
 function game_render(ST)
 {
 	
-	let f = cz + czv*ST
-	setFocal( 1. * (1-f) + 3 * f )//.9 +sin(tick*.001)*.05);
-
 
 	ct.setTransform(1,0, 0,1, 0,0);
-	//ct.clearRect(0,0,cv.width,cv.height);
-
-	//if( 1 )
+	
 	{
 		let grd = ct.createLinearGradient(0, 0, 0, cv.height/1.8);
 		grd.addColorStop(0, "#0af");
@@ -385,17 +361,12 @@ function game_render(ST)
 
 	*/
 
+	let f = cz + czv*ST
+	setFocal( 1. * (1-f) + 3 * f )
+	set3(CT[3],.5,-5,.75 )
 
-	
-	//if( lookat )
-	//else
-
-	set3(CT[3],.5,-5,.75 )//+sin(tick*.005));
-	
-	
-
-	let yaw =  -(cx+cxv*ST) //-(mouse_nx-.5) ;//
-	let pit =  -(cy+cyv*ST)*.5 //-(mouse_nx-.5) ;//
+	let yaw =  -(cx+cxv*ST)*.5
+	let pit =  -(cy+cyv*ST)*.5
 
 	yaw += cos((tick + ST)*.0025 ) *.01
 	pit += .175+cos((tick + ST)*.0025 ) *.01
@@ -404,10 +375,8 @@ function game_render(ST)
 	let Q = [[cos(yaw),sin(yaw),0],[0,0,1],[sin(yaw),-cos(yaw),0]]
 	mmul(CT,Q,P)
 	
-	
 	tpovDX(DX,CT,ID);
 
-	//
 
 	if(1)
 	{
@@ -496,7 +465,7 @@ function game_render(ST)
 
 
 		s = 1
-		a = 5//tick*.005
+		a = 5
 		C = cos(a), S =sin(a)*s
 		set3( MT[0], C*s,S*s,0)
 		set3( MT[1],-S*s,C*s,0)
@@ -528,8 +497,7 @@ function game_render(ST)
 /*
 
 
-
-  Stuff...
+  
 
 */
 
@@ -592,18 +560,16 @@ function init_game()
 			const H = 360
 			cv.width = 0|(H*cv.clientWidth)/cv.clientHeight;
 			cv.height = H
-		}else{
+		}else { // full resolution
 			
 			cv.width = cv.clientWidth;
 			cv.height = cv.clientHeight;
 		}
 	}
 
-	//init
 	window.addEventListener('resize', resize, false);
 	resize();
 
-	//request 
 	rid = requestAnimationFrame( r_update, cv ) ;
 }
 
