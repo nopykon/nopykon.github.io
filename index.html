@@ -1,227 +1,241 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-	<meta charset="utf-8"/>
-	<meta name="HandheldFriendly" content="true"/>
-	<title>nopykon.github.io</title>
-  </head>
+<html>
+  <head>	
+	<meta charset="UTF-8">
 
-  
-  <!--link rel="stylesheet" media="screen and (min-width: 200px) and (max-width: 400px)" href="style.css" /-->
-  <link rel="stylesheet"href="style.css" />
-
-  <body style="background-color:#000;">
+	<meta name="description" content="Portfolio">
+	<meta name="keywords" content="Graphics, Art, Programming">
+	<meta name="author" content="Kristoffer Gustavsson, Qristofer, Nopy">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	
-	<!-- CONTENT -->
-	<div class="abs" 
-		 id="content" 
-		 style="width:100%; height:auto;
-				visibilit:visible;
-				!visibility:hidden;
-				">
-	  
-	  <canvas id="cv" style="height:256px; 
-							  width:100%;
-							  margin-bottom:-4px;">
-		Your browser is old!
-	  </canvas>
-	  
-	  <div class="abs" style="top:25px;width:100%;color:white;text-align:center;">
+	<link rel="stylesheet" type="text/css" href="../style.css">
+	<link rel="icon" href="../icon/favi3.svg">  
 
-		<p style="font-size:11px;">
-		<h1>Nopy's Homepage</h1>
-		<!--br>
-		<i>This page is under construction.<br>There are bugs, and a lot of content is missing.<br> <a href="old_site/">You may want to check out my old website</a>.</i></p-->
 
-	  </div>
-	  
-	  <!-- Middle -->
-	  <div class="Out" style="background-color:rgba(72,154,176,.9);">
-		<div class="Inn" >
-		  <div style="background-image: url('img/sharpseal128.png');
+	<title>Nopy's Stuff</title>
 
-					  background-repeat: no-repeat;
-					  width:128px;
-					  height:128px;
-					  background-position:0px 0px;
-					  background-size:128 128px;
-					  padding:4px;
-					  float:left;"></div>
+
+  </head>  
+  <body >
+
+	<div class="TMD">
+
+	  <table width="100%" style="margin:0px; padding:0px;">
+		<tr>
 		  
-		  <h2>Hello!</h2>
-		  <div style="margin-top:-12px;">
-			<p><b>I'm a programmer, 2D/3D-artist and a bit of a music dabbler with the ambition to create fun and challenging games with excellent art and technology.</b></p>
-		  </div>
-		</div>
-	  </div>
+		  <td width="100px">
+		  </td>
 
-	  <!-- Projects -->
-	  <div id="Soft" class="Out" style="background-color:rgba(72,76,76,1.0);">
-		<div class="Inn">
-		  <div class="btn" id="show_projects" onclick="projects.toggle()">show</div>
-		  <div class="btn_text" onclick="projects.toggle()"><h2>Projects</h2></div>
-		  <p>Most of my projects are top secret, but you may have a look at these. <b>Bandwidth warning: there will be gifs.</b></p>
-		  <div id="projects"></div>
-		</div>
-	  </div>
+		  <td>
+			
+			<a href="../post/3D.html"><div class="button"><img src="../../icon/blender-1.svg" width="16px" /> &nbsp;3D Art </div></a>
+			<a href="../post/2D.html"><div class="button"><img src="../../icon/paintbrush.svg" width="16px" /> &nbsp;2D Art </div></a>
+			<a href="../post/games.html"><div class="button"><img src="../../icon/joystick.svg" width="16px" /> &nbsp;Games </div></a>				
+			<a href="../post/code.html"><div class="button"><img src="../../icon/hammer-solid.svg" width="16px" /> &nbsp;Programming Projects</div></a>	
 
-	  <!-- JS13K -->
-	  <div id="JS13k" class="Out" style="background-color:rgb(128,0,64);">
-		<div class="Inn">
-		  <div class="btn" id="show_js13k" onclick="js13k.toggle();">show</div>
-		  <div class="btn_text" onclick="js13k.toggle();"><h2>13K of Javascript</h2></div>
-		  <p>JS13K is a month-long annual programming challenge. The goal is to create a game using no more than 13K of compressed code and data, no external libraries or frameworks allowed.</p>
-		  <div id="js13k"></div>
-		</div>
-	  </div>
-
-
-	  <!-- Games -->
-	  <div id="Games" class="Out" style="background-color:rgba(72,76,76,1.0);">
-		<div class="Inn">
-		  <div class="btn" id="show_games" onclick="games.toggle()">show</div>
-		  <div class="btn_text" onclick="games.toggle()"><h2>Games</h2></div>
-		  <p>Mostly very old games I've submitted to various game jams.</p>
-		  <div id="games"></div>
-		</div>
-	  </div>
-
-	  <!-- TIC-80 -->
-	  <div id="Tic" class="Out" style="background-color:rgba(32,86,170,1.0);">
-		<div class="Inn">
-		  <div class="btn" id="show_tic" onclick="tic.toggle()">show</div>
-		  <div class="btn_text" onclick="tic.toggle()"><h2>TIC-80</h2></div>
-		  <p>I've made a bunch of demos for the fantasy console TIC-80. MASSIVE GIF WARNING!</p>
-		  <div id="tic"></div>
-		</div>
-	  </div>
-
-
-	  <!-- Art -->
-	  <div id="Art" class="Out" style="background-color:rgba(32,32,32,1.0);">
-		<div class="Inn">
-		  <div class="btn" id="show_art" onclick="art.toggle()">show</div>
-		  <div class="btn_text" onclick="art.toggle()"><h2>Art</h2></div>
-		  <p>Paintings, concepts, pixels and 3D models.</p>
-		  <div id="art"></div>
-		</div>
-	  </div>
-
-	  <!-- Graphs 
-	  <div id="Graph" class="Out" style="background-color:rgb(0,128,64);">
-		<div class="Inn">
-		  <div class="btn" id="show_graph" onclick="graph.toggle()">show</div>
-		  <HH   onclick="graph.toggle()" style="cursor:pointer;">
-			Functions and Graphs</HH>
-		  <p>I'm hoping to populate this section with useful snippets of math as I remember (or discover) them. Math is one thing I constantly wish I was better at. It truly is a super-power of sorts, in the world of software.</b></p>
-		  <div id="graph"></div>
-		</div>
-	  </div-->
-
-	  
-	  <!--MUSIC 
-	  <div class="Out" style="background-color:rgba(128,32,0,1.0);">
-		<div class="Inn">
-		  <div class="btn" id="show_music" onclick="music.toggle()">show</div>
-		  <div class="btn_text" onclick="music.toggle()"><h2>Music</h2></div>
-		  <p>I like music, who doesn't?</p>
-		  <div id="music"></div>
-		</div>
-	  </div>
-	  -->
-
-	  <!-- Programming Code 
-	  <div class="Out" style="background-color:rgba(46,56,56,.970);">
-		<div class="Inn">
-		  <div id="show_programming" onclick="code.toggle()" class="btn">show</div>		 
-		  <div class="btn_text" onclick="code.toggle()"><h1>Programming</h1></div>
-		  <p>Here I try to briefly summarize my experience as a programmer. <b><i>Extra brief version: C, C++, Javascript, Lua and some Python.</i></b></p>
-		</div>
-		<div class="Inn">
-		  <div id="programming"></div>
-		</div>
-	  </div>
-	  -->
-
-	  <!-- ABOUT 
-	  <div class="Out" style="background-color:rgba(72,76,76,1.0);">
-		<div class="Inn">
-		  <div class="btn" id="show_about" onclick="about.toggle()">show</div>
-		  <div class="btn_text" onclick="about.toggle()">About/CV</div>
-		  <p>Short version: <i>No, I don't have 20 years of experience with Node-JS.</i></p> 
-		  <div id="about"></div>
-		</div>
-	  </div>
-	  -->
-	  
-	  <!-- Contact -->
-	  <div class="Out" style="background-color:rgba(72,154,176,.9);
-							  padding-top:20px;
-							  padding-bottom:20px;
-							  color:#fff;">
-		
-		<div class="Inn">
-		  
-		  <!--div class="btn" id="show_contact" onclick="contact.toggle()">show</div-->
-		  <div id="contact">
-			<h2>Contact</h2>
-			<p><p>Go ahead and write to me about work or anything related to this site.</b></p>
-
-
-			<table>
-			  <tr>
-				<th>E-mail</th>
-				<!--th><kristoffer-at-thiswebsite-dot-nu </th-->
-				<th> <a href="mailto:nopykon@gmail.com"
-						target="_top"><span id="mail">nopykon@gmail.com</span></a>
-				  <!--span id="cpybtn" onclick="CopyToClipboard('mail','cpybtn')">Copy</span>
-				  <!--span class="btn" onclick="copy_cont('mail')">Mailto</span-->
-				</th>
-			  </tr>
-
-			  <tr>
-				<th>Twitter</th><th><a href="https://twitter.com/qristofer">@qristofer</a></th>
-			  </tr>
-			</table>
-			<br>
-			<br>
-			<br>
-			<br>
-			<br>
-			<br>
-			<br>
-			<div style="text-align:center">
-			  <p>Thanks for visiting!</p>
-			  <br>
-
+			
+			
+			
+			<div style="float:right;">
+			  <a href="https://github.com/qristofer"><div class="button"><img src="../../icon/github-alt-brands.svg" width="16px"/>  </div></a>
+			  <a href="https://discordapp.com/users/171654480960421888"><div class="button"><img src="../icon/discord-brands.svg" width="16px" />  </div></a>
+			  <a href="https://twitter.com/qristofer"><div class="button"><img src="../icon/twitter-brands.svg" width="16px">  </div></a>
+			  <a href="mailto:nopykon@gmail.com?subject=Mail from a visitor"><div class="button" style="margin-right:32px;"><img src="../icon/envelope-solid.svg" width="16px" />  </div></a>
 			</div>
-			<!--br><br><br><br><br-->
-		  </div>
-		</div>		   
-	  </div>
+			<div style="clear:both;"></div>
+		  </td>
+		</tr>
+	  </table>
 	  
-	  <!-- Bottom Bye 
-	  <div class="Out" style="background-color:rgba(77,128,128,1.0);">
-		<div class="Inn" style="text-align:center;">
-		  <p>Bye</p>
-		</div>
-	  </div>
-	  -->
-	  <!--canvas id="cv" style="height:200px;width:100%;margin-bottom:-4px;"></canvas-->
-	</div><!-- /CONTENT -->
+	  <a href="../index.html">
+		<image id="TopSeal" src="../../icon/LongSeal.svg" style="position:absolute; left:32px; bottom:-25%; height:100%;">
+	  </a>
 
-  </body>
-<script src="script.js" type="text/javascript"></script>
-<script src="demo/tmp.js" type="text/javascript"></script>
+	</div>
+	
+	
+		  <!-- a href="../post/fps.html"><div class="button"><img src="../../icon/fpsgun.svg" width="16px" /> FPS Project</div></a -->	
+		  <!-- a href="../post/js13k.html"><div class="button"><img src="../../icon/js-square-brands.svg" width="16px" /> JS13K </div></a -->
+		  
+<div class="columnwrap" >
 
 
-  <!--script src="src/m.js"></script>
-  <script src="src/gl.js"></script>
-  <script src="src/gt.js"></script>
-  <script src="src/gouraud.js"></script>
-  <script src="src/c.js"></script>
-  <script src="src/game.js"></script>
-  <script src="3d/tmesh.js"></script>
-  <script src="src/main.js"></script-->
+  <!-- GREETINGS -->
+  <div class="ce" id="GREETINGS" >
+	<h1 style="font-size:128px;" >Hej!</h1> 
+	<p><b>I'm a programmer, 2D/3D-artist and (at work) a layouter/graphics designer.
+		My ambition is to create fun and challenging games with wonderful art, design, storytelling and technology.</b></p>
+	
+	<p>On this page I have thoughtlessly poured in a bunch of gifs and images with very little in the way of explanation—I'm still tinkering with the site—but there should be at least a few pages with more information about various projects and topics.</p>
+	
+	<p>Enjoy your stay!</p>
+	
+	<p style="font-size:12px;">P.S. I'm looking for work. Hire me!</p>
+	
+	<div style="width:100%; text-align:right;"><p><i>Kristoffer (a.k.a. Nopy)</i></p></div>
+  </div>
+  
+  <!-- ART -->
+  <div class="ce clickable">
+	<a href="post/2D.html"><h3>Paintings</h3></a>
+	<img src="../img/caleb.jpg" width=100%>
+	<a href="post/2D.html">Click to see more</a>
+  </div>
 
+
+  <!-- SEAL KART -->
+  <div class="ce">
+	<h3>Cart Racer Mockup</h3>
+	<p>HTML5 Canvas 3D-Rendering Test, no gameplay or anything like that.</p>
+	<img src="../img/sealkart.jpg" width=100% />
+	<p style="font-size:13px;">Would be cool to re-use this tech to display some of my other 3D-models on this site. When I find the time.</p>
+	<a href="/sealkart/">Click to run demo in your browser</a>
+  </div>
+	
+
+
+  <div class="ce">
+	<h3>Skybox Rendering</h3>
+	<p>A few words about Ray-Traced Skyboxes, and how they're used in my retro game project.</p>
+	<img src="img/skyboxthumb.jpg" width=100% style="border:1px solid #444;" />
+	<img src="../img/clouds.gif" width=100% style="margin-top:8px;" />
+	<a href = "post/skybox.html">Click to read more</a>
+  </div>
+
+
+  <!-- TIC-80 -->
+	 <div class="ce">
+	<h3>TIC-80 Demos</h3>
+	<p>I've made some tech demos for TIC-80, the <i>Fantasy Console</i>.</p>
+	<video autoplay muted loop>
+	  <source src="../vid/walken.webm" type="video/webm" />
+	</video>
+	<a href="post/tic80.html">Click to read more</a>
+  </div>
+	
+  <!-- Sacred Seal -->
+  <div class="ce">
+	<!-- h4>Unreleased 3D-Shmup</h4 -->
+	<img src="img/flatshaded.gif"  width=100% />
+  </div>
+
+  <!-- FPS -->
+  <div class="ce clickable">
+	<h4>Top Secret Retro FPS Project</h4>
+	<video autoplay muted loop>
+	  <source src="../vid/snowsplinedude.webm" type="video/webm" />
+	</video>
+	<a href="post/fps.html">More info soon...</a>
+  </div>
+
+
+
+  <!-- LOW-POLY MODELS -->
+  <div class="ce clickable">
+	<a href="post/3D.html">	<h2>Low-poly Characters</h2></a>
+	<p>Modelling, texturing, rigging and animation and character control code.</p>
+	<img src="../fps/PurbleBeastShoot.gif" width=100% />
+	<img src="../fps/fps_mc.png" width=100% />
+
+	<!-- img src="../fps/PurbleBeastShoot.gif" width=100% />
+	<video autoplay muted loop>
+	  <source src="../fps/yellowShirtGirl.webm" type="video/webm" />
+	</video -->
+			<a href="post/3D.html">Click to see more</a>
+  </div>
+
+  <!-- FREE LIST -->
+  <div class="ce">
+	<img src="../img/memory.gif" width=100% ></img> 
+	<h4>Free list</h4>
+	<p style="font-size:12px;">Memory allocation and deletion for game objects of random sizes (even though they're all "circles"). Orange means free.</p>
+	<p style="font-size:12px;"> (TODO: REMOVE RANT AND PUT IN PROGRAMMING POST) Implemented like a Free list - keeping track of free space instead of the used. While I find the textbook implementation of the data structure rather elegant, storing the Hole-information in Linked list nodes at their actual memory location; my code use a linear array and bin-search, because I wanted to be able to search it quickly for game engine reasons.</p>
+  </div>
+
+
+
+  <!-- 3D -->
+  <div class="ce clickable">
+
+	<a href="post/3D.html"><h3>Blender Creations</h3></a>
+	<img src="../img/glgrill.gif"  width=49% />
+	<img src="../img/glgrillrune.gif"  width=49% />
+	<img src="../img/superseal.jpg" width=100% />
+	<a href="post/3D.html">See more</a>
+  </div>
+	  
+  <!-- JS13K18 -->
+  <div class="ce">
+	<h3>JS13K 2018</h3>
+	<p>WebGL Racing Game in 13 kilobytes</p>
+	<img src="../img/js13k18.gif" width=100% /> 
+	<a href="post/js13k.html#js13k18">Click to read more</a>
+  </div>
+
+  <!-- GJK -->
+  <div class="ce">
+	<h3>GJK Shenanigans</h3>
+	<p>I'll leave this here to remind myself to write about my exploration of this subject.</p>
+	<img src="../img/gjkepa.png" width=100% /><img src="../img/gjk1.gif" width=100% />
+  </div>
+
+  <!-- RB 2D -->
+  <div class="ce">
+	<img src="img/js13k19_0.gif" width=100% />
+	<p>2D Rigid Body simulation with JavaScript</p>
+  </div>
+
+  <!-- JS13K15 -->
+  <div class="ce">
+	<h3>JS13K 2015</h3>
+	<p>Combat flight game rendered using custorm rasterizer on a HTML5 Canvas.</p>
+	<p>I've made some tech demos for TIC-80, the Fantasy Console.</p>
+	
+
+	<img src="../js13k/fc.gif" width=100% /> 
+	<a href="post/js13k.html#js13k15">Click to read more</a>
+  </div>
+
+	
+  <!-- SWEEP -->
+  <div class="ce">
+	<img src="img/sweep.gif" width=100% />
+	<p>A minesweeper clone I had fun making and playing.</p>
+  </div>
+
+  <!-- Flight Sim -->
+  <div class="ce">
+	<h3>Flight Sim</h3>
+	<img src="../img/flyout2.gif"  width=100% />
+	<p style="font-size:12px;">Each wing/surface is part of the equation that forms the flight characteristics of the airplane as a whole. Coded in C.</p>	
+  </div>  
+  
+  <!-- NATTLUVAN -->
+  <div class="ce">
+	<h4>Nattluvan</h4>
+	<p>Game made with Java and OpenGL for a game jam in 2014</p>
+	<img src="https://img.itch.zone/aW1hZ2UvOTg4Ni8zMDYzMi5naWY=/original/Arwo%2FX.gif" width=100% />
+	<a href="https://nopy.itch.io/nattluvan">Click to visit game page on itch.io</a>
+  </div>
+
+  <!-- TUNNELING -->
+  <div class="ce">
+	<h4>China Tunneling</h4>
+	<p>Simple 2D Action Game made with C++ and OpenGL for a game jam in 2015.</p>
+	<img src="img/china_tunneling.jpg" width=100% />
+	<img src="img/ct_title.jpeg" width=100% />
+	<a href="https://nopy.itch.io/china_tunneling">Click to visit game page on itch.io</a>
+  </div>
+  
+  <!-- SHINY GIF -->
+  
+  <div class="ce">
+	<img src="../img/bink_vibes.gif" width=100% />
+  </div>
+  
+	
+  
+</div>
+<div style="text-align:center;color:#aaa;"><p><b><br><br><br>Thanks for visiting!</b></p></div>
+</body>
+<script src = "script.js" > </script>
 </html>

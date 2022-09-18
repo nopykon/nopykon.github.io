@@ -1,251 +1,218 @@
-body {
-    margin:0;
-    width:100%;
-    height:100%;
+@font-face {
+    font-family:'SelawikBold';
+    src:url('font/selawkb.ttf') format('truetype');
+    font-weight:bold;
+    font-style:normal;
+}
+
+@font-face {
+    font-family:'SelawikLight';
+    src:url('font/selawkl.ttf') format('truetype');
+    font-weight:normal;
+    font-style:normal;
+}
+
+@font-face {
+    font-family:'SelawikRegular';
+    src:url('font/selawk.ttf') format('truetype');
+    font-weight:normal;
+    font-style:normal;
+}
+
+@font-face {
+    font-family:'SelawikSemibold';
+    src:url('font/selawksb.ttf') format('truetype');
+    font-weight:normal;
+    font-style:normal;
+}
+
+@font-face {
+    font-family:'SelawikSemilight';
+    src:url('font/selawksl.ttf') format('truetype');
+    font-weight:normal;
+    font-style:normal;
 }
 
 
-img {
-	width:100%;
-	margin-bottom:-4px;
-	/*cursor:pointer;*/
-}
+h1,h2,h3,h4 {
+	font-family:'SelawikRegular','Trebuchet', sans-serif;
+	font-weight:normal;
+	font-style:normal; 
+	margin-top:0px;
+	margin-bottom:4px;
 
-
-.abs {
-	position: absolute;
-}
-
-h1 {
-	font-family: Verdana, Geneva, sans-serif;
-	font-size: 38px;
-	display: block;
-	margin-top:-4px;
-	margin-bottom:-8px;
-	font-weight: lighter;
-
-}
-h2 {
-
-	font-family: Verdana, Geneva, sans-serif;
-	font-size: 32px;
-	display: block;
-	margin-top:-4px;
-	margin-bottom:-8px;
-	font-weight: lighter;
 
 }
 
-h3 {
-	font-family: Verdana, sans-serif;
-	font-size: 18px;
-	display: block;
-	margin-bottom:-10px;
-	
+h1 { 
+	font-size:64px; 
 }
+
+h2 { 
+	margin-top:0px;
+	margin-bottom:8px;
+	font-size:48px;
+}
+
+h3 { 
+	margin-top:0px;
+	margin-bottom:8px;
+	font-size:32px;
+}
+
+h4 { 
+	margin-top:0px;
+	margin-bottom:8px;
+	font-size:24px;
+}
+
+p {
+	margin-top:0px;
+	font-family:'SelawikRegular', 'Trebuchet', sans-serif;
+	font-size:15px;
+} 
 
 a {
-	color: white;
-	font-style: underscore;
-}
+	font-family:'SelawikRegular', 'Trebuchet', sans-serif;
+	font-size:15px;
 
+	color:#ddd;
+	text-decoration-line: underline; 
+}
 a:hover {
-	color: cyan;
-}
-
-
-b {
-	/*color: #ffa;*/
-	font-style: bold;
-}
-.Out {
-	margin:0;
-	padding:0;
-	
-	padding-top:12px;
-	text-align:center;
-	/*background-color:rgba(77,87,77,.85);*/
-	background-color:rgba(77,128,128,.85);
-	
-}  
-
-/* < 500px */
-@media (max-width: 600px) {
-	
-	.Inn {
-		width:350px;
-		margin: 0 auto; 
-		color:white;
-		text-align:left;
-		overflow:hidden;
-	}
-
-	p {
-		font-family: Verdana, sans-serif;
-		font-size: 11px;
-	}
-
-	.List {
-		font-family: Verdana, sans-serif;
-		font-size: 11px;
-	}
-}
-
-
-/* > 800px */
-@media (min-width: 600px) {
-
-	.Inn {
-		width:600px;
-		margin: 0 auto; 
-		color:#fafffa;
-		text-align:left;
-		overflow:hidden;
-		
-	}
-
-	p {
-		font-family: Verdana, sans-serif;
-		font-size: 14px;
-	}
-
-	.List {
-		font-family: Verdana, sans-serif;
-		font-size: 14px;
-	}
-
-}
-
-.btn {
-	cursor:pointer;
-	background-color:rgba(0,0,0,.25);
-
 	color:#fff;
-	text-align:center;
-	width:96px;
-	float:right;
-	padding:7px;
-	font-family: Verdana, sans-serif;
-	font-size: 16px;
-	margin-bottom:8px;
-
-
-	/*sigh*/
-	-webkit-user-select: none; /* Safari */        
-	-moz-user-select: none; /* Firefox */
-	-ms-user-select: none; /* IE10+/Edge */
-	user-select: none; /* Standard */
+	text-decoration-thickness: 2px;
 }
 
-.btn2 {
-	cursor:pointer;
-	background-color:rgba(0,0,0,0.06125);
+.columnwrap {
+	width:100%; 
+	padding:8px; 
+	columns: 400px 4;
+	column-gap: 8px;
+}
+
+video { width:100%;}
+
+
+.ce {
 	
-	display:inline-block;
-	width:60px;
-	padding: 8px;
-
-
-	color:#fff;
-	text-align:center;
-	
-	/*padding:10px;*/
-	margin:3px;
-	font-family: Verdana, sans-serif;
-	font-size: 14px;
-	margin-bottom:8px;
-
-	/*sigh*/
-	-webkit-user-select: none; /* Safari */        
-	-moz-user-select: none; /* Firefox */
-	-ms-user-select: none; /* IE10+/Edge */
-	user-select: none; /* Standard */
-}
-
-
-
-
-
-.btn:hover, .btn2:hover {
-	color:black;
-	background-color:rgba(128,228,228,.5);
-	text-decoration: underline;
-}
-
-.btn:active, .btn2:active {
-	background-color:rgba(0,0,0,.5);
-	color:cyan;
-	text-decoration: underline;
-
-}
-
-
-.btn_text {
-	
-	cursor:pointer;
-	color:#fff;
-
-	display: block;
-	margin-top:-4px;
-	margin-bottom:-8px;
-	/*sigh*/
-	-webkit-user-select: none; /* Safari */        
-	-moz-user-select: none; /* Firefox */
-	-ms-user-select: none; /* IE10+/Edge */
-	user-select: none; /* Standard */
-}
-
-.btn_text:hover {
-	!color:black;
-	text-decoration: underline;
-}
-.btn_text:active  {
-	text-decoration: underline;
-	color:cyan;
-	
-}
-
-
-th {
-
-	padding-right:16px;
-	font-family: Verdana, sans-serif;
-	font-size: 14px;
-}
-
-
-
-.tunebtn {
-	cursor:pointer;
-	background-color:rgba(0,0,0,.25);
-	color:#fff;
-	text-align:center;
-
 	padding:8px;
-	font-family: Verdana, sans-serif;
-	font-size: 16px;
+
+	background-color:#666;
+	border: 2px solid #696969;
+	color:#ddd;
+	text-align:left;
+	width:100%;
+	display:inline-block;
+	margin:0;
 	margin-bottom:8px;
 
-	/*sigh*/
-	-webkit-user-select: none; /* Safari */        
-	-moz-user-select: none; /* Firefox */
-	-ms-user-select: none; /* IE10+/Edge */
-	user-select: none; /* Standard */
+    animation: fadein .5s;
+    -moz-animation: fadein .5s; /* Firefox */
+    -webkit-animation: fadein .5s; /* Safari and Chrome */
+    -o-animation: fadein .5s; /* Opera */
 }
-
-.tunebtn:hover, .btn2:hover {
-	color:black;
-
-	background-color:rgba(128,228,228,.5);
-}
-.tunebtn:active, .btn2:active {
-	background-color:rgba(0,0,0,.5);
-	color:cyan;
+.clickable {
+	border: 3px dashed #999;
 }
 
 
-.crisp-edges {
-  image-rendering: -webkit-optimize-contrast;
-  image-rendering: crisp-edges;
+
+/* .columnite_clickable:hover { border: 3px dashed #fff;} */
+
+
+/* columnite:hover{
+ * 	color:#00f;
+ * 	border:3px solid #0f0; 
+ * } */
+
+
+
+@keyframes fadein {
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+}
+@-moz-keyframes fadein { /* Firefox */
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+}
+@-webkit-keyframes fadein { /* Safari and Chrome */
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+}
+@-o-keyframes fadein { /* Opera */
+    from {
+        opacity:0;
+    }
+    to {
+        opacity: 1;
+    }
 }
 
+
+
+* {
+	box-sizing:border-box;
+}
+
+body {
+	margin:0px;
+	background-color:#444;
+}
+
+.foot {
+	width: 100%;
+	height: 120px;
+	
+	color:#aaa;
+	text-align:center;
+	padding:50px;
+
+}
+
+
+
+.TMD {
+	width:100%; 
+	background-color:#333; 
+	overflow:hidden;
+	position:relative;
+	/* height:48px; */
+	
+}
+
+
+.button {
+
+	height:100%;
+	display:inline-block;
+	padding:12px;
+	/* border: solid 1px red;; */
+	cursor:pointer;
+	/* height:490px; */
+	
+	font-family:'SelawikRegular','Trebuchet',sans-serif;
+	color:#white;
+	opacity:0.8;
+}
+.button:hover {	opacity:1.0; font-style:bold; }
+/* * .button:active { background-color:lightgrey; } */
+
+
+
+li { 
+	font-family:'SelawikRegular','Trebuchet',sans-serif;
+
+}

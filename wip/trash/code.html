@@ -1,0 +1,77 @@
+<h1>Programming</h1>
+
+<p>This page attempts to describe my preference in programming. Layer up on moisturizer because it's gonna get dry... Also, I'm not sure what to write here that wouldn't just make it appear as if I'm bragging about my leet skillz and my achievements as a programmer. I know how easy it is to come off that way. At the same time, you sort of have to do that to get a job, right? Anyhow, here we go.</p>
+
+<h3>Languages I use regularly</h3>
+<ul>
+  <li>C</li>
+  <li>C++</li>
+  <li>Python</li>
+  <li>JavaScript</li>
+  <li>Lua</li>
+  <li>E-lisp</li>
+</ul>
+
+<h3>Tools</h3>
+<ul>
+  <li>Emacs</li>
+  <li>GNU Compiler Collection</li>
+  <li>CMake</li>
+</ul>
+
+<h3>Libraries (C)</h3>
+<ul>
+  <li>GLFW</li>
+  <li>Various Single Header Libraries</li>
+</ul>
+
+
+<p>Yeah, that pretty much sums up what I use 99.9% of the time when programming.</p>
+
+<p>I do sometimes use Git. When I have to. Maybe I'm missing out on something by not integrating a git-workflow into my brain. And again I'm reminded that I lack experience working in a big team on big software.Working alone on a tiny project, I have to say I still prefer "manually" typing "cp src backups/220829 -r" every now and then. It's simple. In other words I haven't integrated a Git workflow into my brain the way some people appears to have. Maybe I'm missing out. And again, I lack the experience of working on big software team. So why am I even bringing this up, ugh. </p>
+
+<p>No, I don't always use version control. Typing "cp project backup/220830 -r" is simple and works. Dangerous?  Or doing it using Dired in emacs. Or just the OS file browser. Like... yes, I don't get automatic versioning, but typing in a date is also not much work. IDK. I think people get religious about this MINOR detail for no good reason.</p>
+
+
+
+<h3>On language features</h3>
+<p>Often when making games, I find the help a language can provide to be marginal, compared to the difficulty of the <i>real</i> problem itself. The logical problem, the math problem or the design problem. The type of problem I can spend an entire week thinking about - often has little to do with language.<br>
+<p>But then... the source gets big. Past a point (20KLOC or so?) is where it gets so difficult to keep it all in your head, that a different way of programming becomes necessairy. I'm not talking about 1000LOC ->5000LOC, I'm talking about going from a well structured nicely written 20KLOC C  program, to 1MLOC and beyond. About that I couldn't tell you anything, because I've never been part of a big team working on big software. But my suspicion is that some language features that help to deal with the complexity is worth a lot. You know, Java and Go probably exists for reasons. </p>
+
+  
+<span style="padding-left:1.8em"/>Once I've learned enough of a language to use it, I'm a happy coder. The disagreement I may have with any language is, on the whole, not <i>that</i> bothersome. The bottleneck is more likely to be <b>me</b>. That's not to say the choice of tools when making something doesn't matter. Or that the tools couldn't be much better.</p>
+
+<br>
+
+<h3>Languages I use</h3>
+<p><b>C</b> is my favorite language. It has many flaws. It might be the stockholm syndrome of having relied on it for so long. But there it is. I won't bore you with my rant on C. What could I say that hasn't been said by others so many times already. </p>
+ <!-- <p>I use it because I know I can compile it anywhere and I don't need to set up big fat IDE or software suite to use it. <!-- I use it when I want more or less <i>exact</i> control over how a program behaves. Or when I just need low-level access. It has a limited set of features so it doesn't take up much headspace to use. It's abundant and it compiles quickly.  </p> -->
+
+<p><b>C++</b> was the first language I learned, and one I still use a lot.
+
+
+ My preference now would be to only use "the good parts" of the language(very subjective, and who doesn't. Rather, does *anyone* use ALL of C++? Is that even possible?</p>
+
+<p>I tend to code C++ in a style not too remote from C. But if you're thinking of hiring me and now start to suspect that I wouldn't be able to work in your team because of C++ ideology, you're wrong about me being idealistic about it. I'd be happy to adapt. I know I have much to learn about working on bigger projects with big teams. <br>
+
+  <span style="padding-left:1.8em"/>I sometimes make use of <b>STL</b> and a modern set of C++-features for some of my programs. I can see how looking at some std::thing() from &lt;algorithm&gt; could be less stressful than looking at the nested loops, you know, when your program reaches 100000 lines of code or so.  I'm happy to adapt and to try new things.</p>
+
+<p style="color:#fda;"><b>Rust? Jai?</b> There are things I would want better help with that C and C++ really doesn't do well. Better control over memory layout, being able to move between <a href="https://en.wikipedia.org/wiki/AoS_and_SoA"><i>AoS and SoA</i></a> without a ton of struggle. Or not having vectorization messed up all the time for silly reasons.</p>
+<br>
+<p><b>Python</b> has lately come to replace some of my C++-written tools in some tasks, thanks to Blender (and the fact that I've been getting more familiar with both Python and Blender). When it's possible, it's nicer to just export to the final format directly, compared to first exporting as Collada or Wavefront or some other intermediary format, before processing it in a separate program.</p>
+
+<p>I use <b>Javascript</b> for things like this website and the occasional browser game. I'm all for making games with HTML5 and WebGL. The site is written <i>purely</i> in Javascript, but if I continue to write as much web-code as I have been lately, I will have to find some better tools. I'm ogling Typescript for game development purposes.</p>
+
+<p>I like <b>Lua</b>. With the rise of Fantasy Consoles such as Pico-8, I've spent a fair amount of time with the language. My <b>FC</b> of choice is <b><a href="https://tic.computer/">TIC-80</a></b>, for which I've made a bunch of 3D-demos. Additionally, I've embedded Lua into some of my game engines for scripting purposes.</p><!-- But now, I'm more interested in creating own tiny scripting language. A project I've started and gotten a fair bit into... to replace Lua...  been temped to desing my own language for that purpose.</p-->
+
+<!--p>Using Emacs has mean writing macros in <b>Elisp</b> every now and then, but rarely enough that I've never gotten good at it. The same would go for a bunch of other languages I've dipped my toes into, out of curiosity (Rust,Haskell,Forth..) or temporary necessity (C#, Batch).</p-->
+
+<p>Finally, I want to mention <b>Java</b>, which I used a lot from about 2010 up until 2014, but never since. As I'm sure is the case for most programmers, there have been many languages I've only dipped my toes into, out of curiosity (Rust,Haskell,Forth) or temporary necessity (Elisp, C#, GML, GDscript...).</p>
+
+<h3>Programming environment</h3>
+<p>I use <b>Emacs</b> for most editing tasks, or notepad++. I've also used MSVS, Eclipse and Code::Blocks. I'm comfy with the <b>GNU Compiler Collection</b> (including the debugger). Compiler Explorer (<a href="https://godbolt.org">godbolt.org</a>) is another tool I've had great use of, and fun poking around with. Some libraries and APIs I'm familiar with include <b>GLFW</b>, <b>SDL</b>, <b>OpenGL</b>, <b>Bullet</b> (physics), <b>TinyXML</b>,  <b>OpenAL</b>, <b>Vorbis</b>, <b>libpng</b>, <b>pthread</b> and <b>TinyCThread</b>.</p>
+<br>
+
+
+
+<p>You made it. Farewell!</p>

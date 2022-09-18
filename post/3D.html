@@ -1,0 +1,151 @@
+<html>
+  <head>	
+	<meta charset="UTF-8">
+
+	<meta name="description" content="Portfolio">
+	<meta name="keywords" content="Graphics, Art, Programming">
+	<meta name="author" content="Kristoffer Gustavsson, Qristofer, Nopy">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+	<link rel="stylesheet" type="text/css" href="../style.css">
+	<link rel="icon" href="../icon/favi3.svg">  
+
+
+	<title>Nopy's Stuff</title>
+
+
+  </head>  
+  <body >
+
+	<div class="TMD">
+
+	  <table width="100%" style="margin:0px; padding:0px;">
+		<tr>
+		  
+		  <td width="100px">
+		  </td>
+
+		  <td>
+			
+			<a href="../post/3D.html"><div class="button"><img src="../../icon/blender-1.svg" width="16px" /> &nbsp;3D Art </div></a>
+			<a href="../post/2D.html"><div class="button"><img src="../../icon/paintbrush.svg" width="16px" /> &nbsp;2D Art </div></a>
+			<a href="../post/games.html"><div class="button"><img src="../../icon/joystick.svg" width="16px" /> &nbsp;Games </div></a>				
+			<a href="../post/code.html"><div class="button"><img src="../../icon/hammer-solid.svg" width="16px" /> &nbsp;Programming Projects</div></a>	
+
+			
+			
+			
+			<div style="float:right;">
+			  <a href="https://github.com/qristofer"><div class="button"><img src="../../icon/github-alt-brands.svg" width="16px"/>  </div></a>
+			  <a href="https://discordapp.com/users/171654480960421888"><div class="button"><img src="../icon/discord-brands.svg" width="16px" />  </div></a>
+			  <a href="https://twitter.com/qristofer"><div class="button"><img src="../icon/twitter-brands.svg" width="16px">  </div></a>
+			  <a href="mailto:nopykon@gmail.com?subject=Mail from a visitor"><div class="button" style="margin-right:32px;"><img src="../icon/envelope-solid.svg" width="16px" />  </div></a>
+			</div>
+			<div style="clear:both;"></div>
+		  </td>
+		</tr>
+	  </table>
+	  
+	  <a href="../index.html">
+		<image id="TopSeal" src="../../icon/LongSeal.svg" style="position:absolute; left:32px; bottom:-25%; height:100%;">
+	  </a>
+
+	</div>
+	
+	
+		  <!-- a href="../post/fps.html"><div class="button"><img src="../../icon/fpsgun.svg" width="16px" /> FPS Project</div></a -->	
+		  <!-- a href="../post/js13k.html"><div class="button"><img src="../../icon/js-square-brands.svg" width="16px" /> JS13K </div></a -->
+		  
+
+<div style="max-width:1000px; 
+			min-width:300px; 
+			margin: 0 auto;
+			color:#ddd;
+			padding:8px;">
+
+<h1>3D Art</h1>
+
+<p>My 3D editing journey started with Valve's Hammer Editor (just as it had been renamed from "WorldCraft"). I made a whole bunch of crappy maps for Half-Life and Counter-Strike 1.6, but they were still fun to try out with friends, if only to discover the immense set of flaws with them. Many big, sometimes pretty, but completely pointless areas that would remain completely unvisited over an entire game of Defuse.
+<br>&emsp;Later I attemted to make my own 3D games, and tried out a bunch of different editors before settling down with <b>Blender 3D</b>, which I've used for all my 3D-editing needs ever since. Blender's got some things I dislike about it, but in the end it's an excellent piece of software (especially comparad to software in general) that I appreciate very much.</p>
+
+
+<h2 id="chars">Low Poly Characters</h2>
+<p>Here are some 3D-characters I've modelled, textured, rigged and animated.</p>
+
+<div style="columns: 400px 2; column-gap:8px; row-gap:8px;">
+  <img src="../fps/PurpleBeastBlend.gif" width=100% />
+  <h4>Big Purple Space Monster</h4>
+  <p>With an arm-cannon. It uses two 64x64 textures, each with its own 16-color palette.</p>
+  <img src="../fps/PurpleBeastShoot2.gif" width=100% />
+
+  <img src="../fps/fps_mc.png" width=100% />
+  <h4>Dude</h4>
+  <p>A character designed for a first person shooter. The great challenge is to make the very low-poly mesh fold, twist and turn well in many different poses, holding and using many different types of weapons as well as running, jumping, strafing, backpedaling and falling over.</p>
+  <img src="../fps/mc_blender.png" width=100% />
+  <img src="../fps/mc_face.png" width=100% />
+
+</div>
+
+<h2 id="weapons">Weapons</h2>
+<p>Here are some weapon models to be used in the FPS project. These are also rigged and have animated firing sequences.</p>
+<img src="../fps/arsenal1.png" width=100% />
+<img src="../fps/arsenal2.png" width=100% />
+<br>
+
+<p>Coming soon: vehicles, environmental meshes and entire levels. Until then, goodbye!</p>
+<!-- h3 id="levels">Leveldesign</h3>
+<p>I started out making maps for CS 1.6, and I still have an interest in level design, but I never got very good very good at the Desing part. Too much focus put on the visuals.</p -->
+
+<br>																																													 
+
+<h3>Action game Heroine</h3>
+<img src="../img/glgrill.gif"  width=49% />
+<img src="../img/glgrillrune.gif"  width=49% />
+<p>TODO: in-engine footage, texture </p>
+
+<h3>Super Seal</h3>
+<img src="../img/superseal.jpg" width=100% />
+<p>It'sa me... Seal Mario? </p>
+
+
+<br>
+<br>
+<br>
+<br>
+
+
+
+
+<h2>Off topic</h2>
+<h4 id="cr_rant">Color Reduction Automation and Algorthms Rant</h4>
+<p>In my workflow for PS1-stylised games, texture are reduced to use only 16 colors via a separate program that I've written. This enables me to paint my textures directly in Blender (which lacks palette support) and do the color reduction on export. Generating a palette automatically is not <i>as</i> great as maintaining one by hand, but I'm not going to try to do that while painting in Blender, and tabbing back and forward between different editors and having to refresh the image data between them is not great. The results with the automated process is good enough as long as there are not too wildly different hues with too many brightness-levels.</p>
+
+
+
+<p>The algorithm I currently use in the color conversion program is a brute force one that I don't know the name of, if it even has a name. It is very simple, but very slow. So slow that it's only really practical because how fast computers are now, and how my worst case input only have 4096 colors.</p> 
+<ol>
+  <p>Starting off with an array of unique colors (preferably in L*a*b color space), and knowledge of the number of times each color occur in the source image.</p>
+  <li>Find the pair of colors with the lowest score, ie. the two most similar* colors, but biased for the number of occurances.</li>
+  <li>Merge the two colors, (either pick the one used the most, or calculate average).</li>
+  <li>Repeat from step 3 until only N colors remeain.</li>
+</ol>
+
+<p>I have tried using Median Cut with slightly worse results, as well as k-means (with terrible results as well as unpredictibility). I may have been doing something wrong in my Median Cut implementation so I will revisit that little project at some point. Another idea would be to use Gimps command line interface to reduce colors, figuring out that may take just as long though, and it's nicer to have something small and simple in C that I can use for other things as well with very little effort, for example in the skybox generator.</p>
+
+<br>
+<br>
+<br>
+
+</div>
+
+
+<div class="foot">
+  <p>End of page.&emsp;
+	<a href="#top">Top</a>&emsp;
+	<a href="../">Home</a>
+  </p>
+</div>
+
+
+</body>
+</html>

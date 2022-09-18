@@ -1,0 +1,60 @@
+<h2>Game Entity Memory Management using Free list (-ish)</h2> 
+
+
+<h2>The Reason</h2>
+
+<h2>Game Entity System</h2>
+<p>Game entities come in many shapes. In my current game project, they rarely exceed 64B, and will need to be created and removed rapidly. Not all the data is stored in the entity object. For example, the collision body data of an entity is stored separately in a collision system, with just an integer pointer stored at the entity object. This lets entities can will remain small. In all fairness, I could get away using the same (big) size for all entites and just use a simple array.</p>
+
+<p>The #1 rule for my entity system is: Entities are fixed in memory. They do not move.</p>
+<p>This allows all the "Component" Systems to know that the address of the index stored in the entity object, hasn't move either. The component (whatever the data layout may be) is free to move around as it pleases, so long as the index field at the entity is updated.</p>
+
+<p>This is the basis for this whole entity system I'm trying out. So far it has been goin well.</p>
+
+
+<p>Inevitably, if you cannot move entities, and entities are killed off left and right, you will end up with an array full of holes in it. So we need some way of keeping track of what memory is alive, and what is dead.</p>
+
+<p>One could just use a flag, perhaps in a parallel array. It would work, but it would no be very pretty, and you'vd have to scan for an open slot each time something was added. And it seemed wasteful to have all entites be the same size, so I decided to write my own memory manager.<p>
+
+
+
+  <ul>
+	<li>GE pointers can be stored in fewer bits. 16 is more than enough for my game. In fact, I can use 16-bits and still get have 4 byte granularity, which has come in handy many times.</li>
+
+	<li>Never call malloc</li>
+	<li>Never null. (Doesn't mean it isn't dead)</li>
+  </ul>
+
+
+
+
+  For example, the collision body may move to a different index because the body next to it was deleted.
+
+  
+
+Since entities never move, the collision system can be sure at what address of the owning entity hasn't changed, and just directly write to the index.
+
+
+  
+
+
+
+ Nevertheless, here is But this is a differe
+
+
+To be honest, It would not matter too much if they were huge, because at most I use 256 entites. So yeah. 
+
+
+
+
+ When making games, game object need to use memory. They may need to be 
+
+<img src="../img/memory.gif" width=100% />
+<p>Implemented like a Free list - keeping track of free space instead of the used. While I find the textbook implementation of the data structure rather elegant, storing the Hole-information in Linked list nodes at their actual memory location; my code use a linear array and bin-search, because I wanted to be able to search it quickly for game engine reasons. It works on 16B blocks and use relative indices rather than "real" pointers, because I like it when structures are trivial to copy without haveing to deal with special serialization libs or similar in C/C++.</p>
+
+
+
+
+
+
+

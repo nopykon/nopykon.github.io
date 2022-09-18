@@ -1,0 +1,187 @@
+<html>
+  <head>	
+	<meta charset="UTF-8">
+
+	<meta name="description" content="Portfolio">
+	<meta name="keywords" content="Graphics, Art, Programming">
+	<meta name="author" content="Kristoffer Gustavsson, Qristofer, Nopy">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+	<link rel="stylesheet" type="text/css" href="../style.css">
+	<link rel="icon" href="../icon/favi3.svg">  
+
+
+	<title>Nopy's Stuff</title>
+
+
+  </head>  
+  <body >
+
+	<div class="TMD">
+
+	  <table width="100%" style="margin:0px; padding:0px;">
+		<tr>
+		  
+		  <td width="100px">
+		  </td>
+
+		  <td>
+			
+			<a href="../post/code.html"><div class="button"><img src="../../icon/hammer-solid.svg" width="16px" /> &nbsp;Programming Projects</div></a>	
+			<a href="../post/games.html"><div class="button"><img src="../../icon/joystick.svg" width="16px" /> &nbsp;Games </div></a>	
+			<a href="../post/3D.html"><div class="button"><img src="../../icon/blender-1.svg" width="16px" /> &nbsp;3D-Art </div></a>
+			<a href="../post/2D.html"><div class="button"><img src="../../icon/paintbrush.svg" width="16px" /> &nbsp;2D-Art </div></a>
+			
+			
+			
+			
+			<div style="float:right;">
+			  <a href="https://github.com/qristofer"><div class="button"><img src="../../icon/github-alt-brands.svg" width="16px"/>  </div></a>
+			  <a href="https://discordapp.com/users/171654480960421888"><div class="button"><img src="../icon/discord-brands.svg" width="16px" />  </div></a>
+			  <a href="https://twitter.com/qristofer"><div class="button"><img src="../icon/twitter-brands.svg" width="16px">  </div></a>
+			  <a href="mailto:nopykon@gmail.com?subject=Mail from a visitor"><div class="button" style="margin-right:32px;"><img src="../icon/envelope-solid.svg" width="16px" />  </div></a>
+			</div>
+			<div style="clear:both;"></div>
+		  </td>
+		</tr>
+	  </table>
+	  
+	  <a href="../index.html">
+		<image id="TopSeal" src="../../icon/LongSeal.svg" style="position:absolute; left:32px; bottom:-25%; height:100%;">
+	  </a>
+
+	</div>
+	
+	
+		  <!-- a href="../post/fps.html"><div class="button"><img src="../../icon/fpsgun.svg" width="16px" /> FPS Project</div></a -->	
+		  <!-- a href="../post/js13k.html"><div class="button"><img src="../../icon/js-square-brands.svg" width="16px" /> JS13K </div></a -->
+		  
+
+<div style="max-width:1000px; 
+			min-width:300px; 
+			margin: 0 auto;
+			color:#ddd;
+			padding:8px;">
+
+<h2>Are Custom Engines Elitist?</h2>
+<p>Sometimes when discussing game engines with fellow developers, some of them react negatively when it's revealed that someone is using custom stuff for making games instead of Unity/GameMaker/Unreal/Godot.</p>
+
+<p><i>"La-di-da! Well aren't you special?"</i> I've seen the word "elitism" thrown around many times.</p> 
+
+<p>Elitists may exist in many places, but assuming that everyone writing their own engine is one, I don't think is fair. Because there are so many reasons besides "bragging rights" for chosing to use a custom engine. </p>
+
+<p>Before I start listing those reasons, I will say that most developers I know (most of them use Unity) are absolute sweethearts, and that this rant is not designed to make anyone change what tools they use. It's only designed explain our reasoning behind our choices, or at least mine.</p>
+<p>Keep making awesome games in whatever way you prefer!</p>
+
+
+<h3>Making a custom engine isn't some herculean task</h3>
+
+<p>People sometimes over-estimate the difficulty of making a custom engine for a game. Sure, it can be difficult if you aim really really high, but you don't need to. There's no need to beat CryEninge 12 when you're making a doom-clone or a 2D platformer. You just need the stuff you need.<br>&emsp;
+  I almost hesitate before using the word "engine" in many places while writing this. Often the code between engine and game is so intertwined that they're really one and the same. It's the opposite of a general purpose engine, and that of course makes it a lot easier to program.</p>
+
+<p>There are other things that also makes it easier. So many great resources on low level game development. Books, videos, blogs... the internet is full of knowledge. People have been making games for a long time. We're standing on the shoulders of giants.</p>
+
+<p>Libraries can do a lot for you! It's not beyond many to make games using SDL or similar libraies. There are things like RayLib that offers even more. You can get all the elements of a complete game engine without having to write a single line of <i>really</i> low-level engine-code yourself.</p>
+
+<p>It's only gotten easier lately with the rise of single file libraries that cover almost everything. Any algorithm, structure or function you might need is out there on Github. It might take a little effort to make it work, but once you have it you can modify and adapt it for your specific needs.</p>
+
+
+<p>BTW, the difficulty is often self-imposed by programmer, because they wanted the challenge, because they enjoy programming (!?). They didn't really need to "roll it" themselves, they just wanted to.</p>
+
+
+
+<h3>The right tool in the hands of what person?</h3>
+<p>You hand me Engine X and tell me to make a silly little Doom-clone. I would need to spend a long time just learning how to navigate the interface.</p>
+<p>Now if you instead tell me to use my old familiar tools, I would be up and running very quickly. All that Engine X has to offer for making a doom clone, I already figured out how to do with my old tools years ago.</p>
+
+<p>So while there may be an objectively better tool for someone coming in fresh, old dogs are a different.</p>
+
+<p>Many of us simply started out with C++, Python, Pascal or whatever. For good or bad we learned how to make games in different ways what's popular now.</p>
+
+<p>People like what they know and old habits die hard. Its no less true for people that make games.</p>
+
+<p>If the cause of this is because people are too closed-minded and refuse to try new things, then it's sad. If they have tried the new thing and concluded that, no, for now I'll better stick to what I know, then it's sound. Or maybe they're just unwilling at the moment of diving head first into new territory. Whatever the case, I would rarely attribute it to some superiority-complex.</p>
+
+<p>It's good to try new things, regardless of whether you use Enginge X or Y, it goes in all directions. We may get stuck on a local maxima at times, and that enevitable, because we can never be perfect, there's always a higher place to reach. It's the unwillingness to sometimes also climb downwards that is the problem.</p>
+
+
+<H3>We're hooked on the freedom</h3>
+<p>I don't mean freedom in the Stallman/"Libtard"-sense of the word (even though, yes, that is true for some as well), but the <b>freedom of programming the way we want to, the way we're used to, the way we enjoy</b>.
+
+<p>Custom-engine coders like me are used to being able to add code wherever we want, willy-nilly, without restriction. I get a sense of claustrophobia when working within "Engine X". I know that in Godot I could go in and modify the engine since it's open source, but when faced with a game development task, there are two ways of facing it:</p>
+<p>
+  a. How do I make this thing happen within the context of Engine X.<br>
+  b. How do I make this thing happen within the context of my own engine.
+</p>
+  <p>I don't like to keep all of that Engine X stuff in my head. Granted, I still have to keep my own engine in my head. But that is naturally much much easier, since I wrote it. Even if 99% of the code is in libraries that other people wrote, I am still the orchestrator, the one that is putting it all together.</p>
+
+<!--
+<h3>What's the goal</h3>
+<p>People make games for different reasons. Some are laser focused on the end product. I've known may really sharp game developers using Unity as well as GameMaker, that have impressed me greatly with their ability to churn out high quality games.</p>
+
+
+<p>For me, getting a pixel to move around on a framebuffer sort of thing using C and the tools I'm used to there, is trivial. It's not as nice as it should be, but it's an obstacle I've climbed over long ago. If I tried to make a pixel move around using Unity, I wouldn't even know where to start. How do I draw individual pixels to a low resolution to a framebuffer? How do I control it?
+-->
+
+
+<h3>Features</h3>
+<p>A proprietary engine might not have what you're looking for built in. You must add to it, but within the context of whatever engine you're using. This is a big obstacle for a coder like me, demonstrated in the previous point.</p>
+
+<p>Now, I'm sure Engine X has a very well thought out way of adding functionality that would work for me in 99% of the situations. But <i>I</i> don't know of it, yet, so I would need to learn it. I already know how to do it in C.<br>&emsp;
+  In other words, for me, the addition of the Engine X framework only adds bloat and headaches. Despite perhaps having help It's a framework that may have helped 
+
+  I would need to spend time learning it. We can't all know it all, and if we did we probably wouldn't be making games to begin with.</p>
+
+
+
+  
+<p>Experienced programmers strive for simplicity. Complexity is the enemy! Even though we like solving problems, we are not doing this because we're looking for trouble. Most of the time at least. If we do, it's because we are genuinly fascinated by the problem that we want to try our hand at. But most of the time, we just try to solve problems quickly and efficiently, so it doesn't make sense that we do it because of some sense of heroism. Coders are hard working but "lazy".</p>
+
+
+<p>Navigation problem can be harder than programming problems. Finding your way, in life as in game development, is difficult. </p>
+
+
+<p>Making games in general, is hard. Especially if you try to be really really good across the board. The engine, overall, is just a part of the whole. But all parts are needed.</p>
+
+
+
+
+<h3>Preconceived notions</h3>
+<p>I think part of this phenomena is just the human nature to prefer the familiar and to fear the unknown. Sometimes there are reasons to distrust things people attempt to hide from you, but custom engine developers are likely not trying to do that, unless they work for a bigger company.</p> 
+
+<p>More likely will they love to talk about their engines, and maybe even a bit too much and too excitedly. But I don't equate passion and pride in one's work with elitism. In fact, I would prefer products and goods made by people that are passionate and proud about what they do.</p>
+
+<p>What many programmers are trying to do is <b>demystify</b>. We want to bring tools and solutions previously reserved for the actual elite, to the masses. We want to offer transparent alternatives to expensive and mysterious black boxes. Because very often, what's in those black boxes, really isn't <i>that</i> complicated, and the ability to pull at levers inside is often useful.</p>
+
+<p>One black box is Unity. And just to be super clear, I'm not trying to get anyone to stop using Unity. I'm just saying that it's a general good that there are alternatives, and were it not for "elitist" the work of writing low-level code to make something like Godot, it would not exist. We need low-level programmers.</p>
+
+
+<h3>Conclusion</h3>
+<p>So there you have it. While I'm sure elitists exists, like within sports, fashion, car-ownership, arts, stamp-collection or any other area. Hopefully I've convinced you that there are plenty of other reasons people choose to write custom engines for their games.</p>
+
+<p>This rant could be broadened to cover the attitude towards software outside of games as well. One example that grinded my gears was in regard to <a href="https://www.serenityos.org/">SerenityOS</a>, a brand new operating system written from scratch in C++. A discord user went so far as to call the OS <i>elitist</i> for not having a user friendy installer like Ubuntu. So unfair.</p>
+
+<p>Anyhow, I don't want to discourage people from discussing and debating best practices, good ways of solving problems or which engine might be the most suitable for a certain situation. I just which people would think twice before throwing names around.</p>
+
+<p>Keep making awesome games however you want to. The endproduct is what matters.</p>
+
+
+
+
+<br>
+<br>
+<br>
+
+</div>
+
+
+<div class="foot">
+  <p>End of page.&emsp;
+	<a href="#top">Top</a>&emsp;
+	<a href="../">Home</a>
+  </p>
+</div>
+
+
+</body>
+</html>

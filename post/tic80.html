@@ -1,0 +1,143 @@
+<html>
+  <head>	
+	<meta charset="UTF-8">
+
+	<meta name="description" content="Portfolio">
+	<meta name="keywords" content="Graphics, Art, Programming">
+	<meta name="author" content="Kristoffer Gustavsson, Qristofer, Nopy">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+	<link rel="stylesheet" type="text/css" href="../style.css">
+	<link rel="icon" href="../icon/favi3.svg">  
+
+
+	<title>Nopy's Stuff</title>
+
+
+  </head>  
+  <body >
+
+	<div class="TMD">
+
+	  <table width="100%" style="margin:0px; padding:0px;">
+		<tr>
+		  
+		  <td width="100px">
+		  </td>
+
+		  <td>
+			
+			<a href="../post/3D.html"><div class="button"><img src="../../icon/blender-1.svg" width="16px" /> &nbsp;3D Art </div></a>
+			<a href="../post/2D.html"><div class="button"><img src="../../icon/paintbrush.svg" width="16px" /> &nbsp;2D Art </div></a>
+			<a href="../post/games.html"><div class="button"><img src="../../icon/joystick.svg" width="16px" /> &nbsp;Games </div></a>				
+			<a href="../post/code.html"><div class="button"><img src="../../icon/hammer-solid.svg" width="16px" /> &nbsp;Programming Projects</div></a>	
+
+			
+			
+			
+			<div style="float:right;">
+			  <a href="https://github.com/qristofer"><div class="button"><img src="../../icon/github-alt-brands.svg" width="16px"/>  </div></a>
+			  <a href="https://discordapp.com/users/171654480960421888"><div class="button"><img src="../icon/discord-brands.svg" width="16px" />  </div></a>
+			  <a href="https://twitter.com/qristofer"><div class="button"><img src="../icon/twitter-brands.svg" width="16px">  </div></a>
+			  <a href="mailto:nopykon@gmail.com?subject=Mail from a visitor"><div class="button" style="margin-right:32px;"><img src="../icon/envelope-solid.svg" width="16px" />  </div></a>
+			</div>
+			<div style="clear:both;"></div>
+		  </td>
+		</tr>
+	  </table>
+	  
+	  <a href="../index.html">
+		<image id="TopSeal" src="../../icon/LongSeal.svg" style="position:absolute; left:32px; bottom:-25%; height:100%;">
+	  </a>
+
+	</div>
+	
+	
+		  <!-- a href="../post/fps.html"><div class="button"><img src="../../icon/fpsgun.svg" width="16px" /> FPS Project</div></a -->	
+		  <!-- a href="../post/js13k.html"><div class="button"><img src="../../icon/js-square-brands.svg" width="16px" /> JS13K </div></a -->
+		  
+
+<div style="max-width:1000px; 
+			min-width:300px; 
+			margin: 0 auto;
+			color:#ddd;
+			padding:8px;">
+
+<h2>TIC-80 Projects</h2>
+
+<p><b>TIC-80 is a <i>fantasy console</i> with artificial limitations similar to PICO-8. 16-colors, 240x136 and very limited space for code and data.</b> <p>You can run <a href="https://tic80.com/dev?id=312/" style="text-decoration:underline;"> my demos</a>, as well as creations of others on the <a href="https://tic80.com/" style="text-decoration:underline;">official TIC-80 website</a>.</p>
+
+
+<p>I like this FC because it can be programmed with the full version of Lua (along with a bunch of other languages), as opposed to Pico-8 (the FC that made it a trend) which has some strange all-caps version (which I can see the charm of, but which would be a bigger sacrifice than I'd be willing to make for these kinds of side-projects. I'd rather go all in and progam a real retro console like PS1 or GBA if I'm going to put limits like that on myself).</p>
+
+<br>
+
+
+<h4>FPS Experiment</h4>
+<p>Spent some time working on a demo in the first persion perspective in order to get real close to the polygons, because I had an idea on how to achieve el-shading via clipping that I wanted to try out.</p>
+<img width=100%   src="../tic/walken.gif" width=100% >
+<p>Some basic running an jumping. The character you control is just a sphere, brute force collided against all the geometry.</p>
+<br>
+
+<img width=100%   src="../tic/lightclip.gif" width=49% >
+<p>This was made before perspective correct texturing was a thing in TIC-80, so to remedy the affinedness (?) some quick and dirty triangle subdivision is applied. <br> &nbsp;&nbsp;&nbsp;&nbsp;For a while I completely nerded out on the subject of polygon subdivision, because I wanted to <i>perfect it</i> for other projects unrelated to TIC-80. Getting the maximum visual <i>bang for the buck</i>, using as little subdivision as possible, proved to be a challenge. <br> &nbsp;&nbsp;&nbsp;&nbsp;
+Note that the division at display on this page is very far from perfect. </p>
+<br>
+<video autoplay loop muted width=100%>
+<source src="../tic/dirlightclip.mp4" type="video/mp4" />
+</video>
+<p>Directional "light clipping" in action</p>
+<br>
+<img width=100%   src="../tic/lightclip2.gif" width=49% />
+<p>Radial "light clipping" in action</p>
+<br>
+<!-- img width=100%   src="../tic/ld46.gif" width=49% -->
+
+
+<!--iframe src="https://itch.io/embed/158533" height="167" width="100%" frameborder="0"></iframe-->
+<br>
+<img width=100%   src="../tic/bums2.gif" />
+<p>I also wanted to try out on-the-fly "tesselation". Earlier lighting model is used here with positional lighting (and normals ignored). (Normals are still used by the... <i>vertex extrapolation function</i> in the tesselation.)</p>
+<br>
+<!--img src="img/ld46_x.gif" >
+<p></p-->
+
+
+<br>
+<br>
+<br>
+<h3>Rasterizer Demo</h3>
+<p>My first project on the platform was to write a rasterizer in Lua, to be used for an entry to a 2017 game jam (FCGJ#1). I had grandiose ideas for the game, but time objected to me making anything more than this little rollercoaster ride.
+<br>
+<br>
+<img width=100%   src="../tic/3DRACER.gif" />
+<br>
+<br>
+<br>
+<h3>"LD39"</h3>
+<p>And yet another demo, started on for Ludum Dare, most of the weekend just spent tinkering with the rendering and lighting.</p>
+<img width=100%   src="../tic/walk.gif" />
+
+<br>
+<br>
+<p>That is all. Thanks for scrolling by.</p>
+
+<br><br>
+
+<br>
+<br>
+<br>
+
+</div>
+
+
+<div class="foot">
+  <p>End of page.&emsp;
+	<a href="#top">Top</a>&emsp;
+	<a href="../">Home</a>
+  </p>
+</div>
+
+
+</body>
+</html>

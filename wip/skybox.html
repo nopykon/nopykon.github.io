@@ -1,0 +1,76 @@
+<h2>Skybox Rendering</h2>
+
+<p>I needed a way to generate skyboxes for one of my games... </p>
+
+<video width=100% autoplay muted loop> 
+  <source src="../vid/nopys_skybox.webm" type="video/webm" >
+</video>
+
+
+<h3>Ray-Tracing the Sky</h3>
+<p>It's ray-tracing... Lorem Ipsum. TODO: Write about:</p>
+<ul>
+  <li> Noisemap (Not Perlin)</li>
+  <li> Sun-rendering</li>
+  <li> Planets-rendering</li>
+  <li> Sky-gradient</li>
+  <li> Water-reflection, accumulated sine waves</li>
+  <li> Terrain-rendering</li>
+</ul>
+
+<p>There really isn't anything fancy going on here in terms of math. Just ray intersection, a bunch of dot and cross products... I'm too tired to write about it at the moment. You're better of learning about it watching "The Art of Code" on YouTube, or reading some book, then learning it from me here.</p>
+
+<img src="../img/skyboxB.gif" width=49% />
+<img src="../img/skyboxC.gif" width=49% />
+<p>Noise.</p>
+
+
+<br>
+
+
+
+<h3>Ray-Tracing the Terrain</h3>
+<p>It's ray-tracing... Lorem Ipsum</p>
+<h3><i>Doing it fast</i></h3>
+<p>Lorem Ipsum... and because computers are fast, I was able to render a whole side of the skybox in less than 16ms</p>
+
+
+
+
+<p>Lorem Ipsum</p>
+<p>Lorem Ipsum</p>
+
+
+<img src="../fps/skybox_in_action.png" width=100% />
+<p>The skybox in action.</p>
+<br>
+
+<h3><i>(Re-)Rendering</i> the Skybox In-Game</h3>
+<p>This may belong in the PS1/Software Rendering section (that does not yet exist). 
+But basically each side of the <i>big box</i> is split up int 8x8 quads. This serves two purposes:<br>
+  - It reduces the affine-texture warping to a satisfying degree.<br>
+  - It allows each 32x32 pixel sub-quad to use its own 16-color palette.<br>
+</p>
+
+<video autoplay loop muted width=100%>
+<source src="../fps/sky.webm" type="video/webm" />
+</video>
+<p style="font-size:12px;"><i>The skybox being all skyboxxy n stuff.</i> (Apologies for the beyond bloated HUD that I should've turned off before recording the video.)</p>
+
+
+
+<p>I had some real struggles against the color limitation before coming up with this solution. Because of how noisy and variable the colors in the sky is, 16 colors on a 64x64 texture just didn't cut it. No matter what dithering or color reduction methods I tried. Another solution would've been to use 256-color textures instead, but that would use more memory for the texture map. (My solution use slightly more memory for the CLUTs, but in total, using 4-bit texels instead of 8-bit, it saves far more).</p>
+
+<!-- h3>Median-Cut Color Reduction</h3>
+<p>The algorithm used for color reduction is Median-Cut, and it's fast enought to run in real time. Initially I used K-means, which was too slow to make the skybox-generator update at a pleasant rate, and the results were too... random. Shoutouts to Mattias Gustavsson for tipping me off about the algo. He has an excellend single-file implementation of it ( "palettize.h" ). For learning and multi-threading purposes I decided to roll my own.</p -->
+
+
+<br>
+<p>Goodbye!</p>
+<br>
+<br>
+<br>
+<br><br>
+
+
+
