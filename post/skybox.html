@@ -30,7 +30,7 @@
 			<a href="../post/3D.html"><div class="button"><img src="../../icon/blender-1.svg" width="16px" /> &nbsp;3D Art </div></a>
 			<a href="../post/2D.html"><div class="button"><img src="../../icon/paintbrush.svg" width="16px" /> &nbsp;2D Art </div></a>
 			<a href="../post/games.html"><div class="button"><img src="../../icon/joystick.svg" width="16px" /> &nbsp;Games </div></a>				
-			<a href="../post/code.html"><div class="button"><img src="../../icon/hammer-solid.svg" width="16px" /> &nbsp;Programming Projects</div></a>	
+			<a href="../post/code.html"><div class="button"><img src="../../icon/hammer-solid.svg" width="16px" /> &nbsp;Programming</div></a>	
 
 			
 			
@@ -72,18 +72,24 @@
 </video>
 
 
-<h3>Ray-Tracing the Sky</h3>
-<p>It's ray-tracing... Lorem Ipsum. TODO: Write about:</p>
+<h3>Ray-Tracing</h3>
+<p>It's ray-tracing, which you can read about in a lot of places. Maybe I'll still write about it in more detail if I come back to edit this. Anyway, you're better of learning about it watching "The Art of Code" on YouTube, or reading some book, rather than learning it from me here.</p>
+<p>There really isn't anything fancy going on here in terms of math. Just ray intersection, a bunch of dot and cross products and a lot of interpolation. </p>
+
+<p>Here are some of the lego pieces used to make the whole:</p>
 <ul>
-  <li> Noisemap (Not Perlin)</li>
-  <li> Sun-rendering</li>
-  <li> Planets-rendering</li>
-  <li> Sky-gradient</li>
-  <li> Water-reflection, accumulated sine waves</li>
-  <li> Terrain-rendering</li>
+  <li> Noisemap (not Perlin), just an array of random() values that are interpolated when sampled.</li>
+  <li> Sky-gradient, blending between colors depending on the direction of the ray.</li>
+  <li> Clouds, sampling the noise map and adding some color.</li>
+  <li> Sun-rendering, by just taking the dot product of the ray direction and the sun to some high power.</li>
+  <li> Planets-rendering, ray sphere intersection with textures bleneded from the X, Y and Z axes.</li>
+
+  <li> Noise Landscape/Terrain-rendering, lighting and with cloud shadows and different textures and colors depending on elevation.</li>
+  <li> Water and water-reflections, surface determined by accumulated sine waves. Sea and land and beaches decided by the elevation.</li>
 </ul>
 
-<p>There really isn't anything fancy going on here in terms of math. Just ray intersection, a bunch of dot and cross products... I'm too tired to write about it at the moment. You're better of learning about it watching "The Art of Code" on YouTube, or reading some book, then learning it from me here.</p>
+
+
 
 <img src="../img/skyboxB.gif" width=49% />
 <img src="../img/skyboxC.gif" width=49% />
@@ -94,16 +100,12 @@
 
 
 
-<h3>Ray-Tracing the Terrain</h3>
-<p>It's ray-tracing... Lorem Ipsum</p>
-<h3><i>Doing it fast</i></h3>
-<p>Lorem Ipsum... and because computers are fast, I was able to render a whole side of the skybox in less than 16ms</p>
-
-
-
-
-<p>Lorem Ipsum</p>
-<p>Lorem Ipsum</p>
+<!-- h3>Ray-Tracing the Terrain</h3>
+<p>It's ray-tracing... Lorem Ipsum</p -->
+<h3>Low hanging fruit for speed</h3>
+<p>To speed the process up, to be able to see the clouds pass by in real time, the screen/skybox-sides are split up into tiles smaller tiles which are rendered in parallel with threads from a thread pool. Each thread also performs the color reduction that is needed for the format my skyboxes are stored in for my game engine.</p>
+<p>Multitreading took it from ~20 frames per second to a solid 60 (on my quad core machine), so this worked better than most things you try to speed up by throwing more cores at it.</p>.
+<p>I've made no real efforts to vectorize the computation, but maybe that's the next step. On the other hand, if I <i>really</i> wanted speed I would use the GPU. Maybe I'll move over to that if I need drastically more detailed skyboxes, but for now I'm happy with the simplicity of just using the CPU. The whole thing is only a couple of hundred lines of code, it quickly does what I need it to and it didn't take long to write.</p>
 
 
 <img src="../fps/skybox_in_action.png" width=100% />
@@ -112,10 +114,12 @@
 
 <h3><i>(Re-)Rendering</i> the Skybox In-Game</h3>
 <p>This may belong in the PS1/Software Rendering section (that does not yet exist). 
-But basically each side of the <i>big box</i> is split up int 8x8 quads. This serves two purposes:<br>
+But basically each side of the <i>big box</i> is split up into 8x8 quads. This serves two purposes:<br>
   - It reduces the affine-texture warping to a satisfying degree.<br>
   - It allows each 32x32 pixel sub-quad to use its own 16-color palette.<br>
 </p>
+
+<p>The vertices of the quads in the skybox are transformed like any other in the game engine (just without the translation of the camera) and the quads are drawn like any other textured polygon in the game, except the depth sorting distance is locked at max to alway have it appear behind anything else in the scene. There's some early culling happening, as we know that at least half of the skybox's quads in the direction opposite to the camera angle won't be seen.</p>
 
 <video autoplay loop muted width=100%>
 <source src="../fps/sky.webm" type="video/webm" />
@@ -123,8 +127,8 @@ But basically each side of the <i>big box</i> is split up int 8x8 quads. This se
 <p style="font-size:12px;"><i>The skybox being all skyboxxy n stuff.</i> (Apologies for the beyond bloated HUD that I should've turned off before recording the video.)</p>
 
 
-
-<p>I had some real struggles against the color limitation before coming up with this solution. Because of how noisy and variable the colors in the sky is, 16 colors on a 64x64 texture just didn't cut it. No matter what dithering or color reduction methods I tried. Another solution would've been to use 256-color textures instead, but that would use more memory for the texture map. (My solution use slightly more memory for the CLUTs, but in total, using 4-bit texels instead of 8-bit, it saves far more).</p>
+<h3>Color reduction</h3>
+<p>I had some real struggles against the color limitation before coming up with this solution. Because of how noisy and variable the colors in the sky is, 16 colors on a 64x64 texture just didn't cut it. No matter what dithering or color reduction methods I tried. Another solution would've been to use 256-color palettes instead, but that would double the size of the texture map. (My solution use slightly more memory for the CLUTs, but in total, using 4-bit texels instead of 8-bit, it saves far more).</p>
 
 <!-- h3>Median-Cut Color Reduction</h3>
 <p>The algorithm used for color reduction is Median-Cut, and it's fast enought to run in real time. Initially I used K-means, which was too slow to make the skybox-generator update at a pleasant rate, and the results were too... random. Shoutouts to Mattias Gustavsson for tipping me off about the algo. He has an excellend single-file implementation of it ( "palettize.h" ). For learning and multi-threading purposes I decided to roll my own.</p -->

@@ -30,7 +30,7 @@
 			<a href="../post/3D.html"><div class="button"><img src="../../icon/blender-1.svg" width="16px" /> &nbsp;3D Art </div></a>
 			<a href="../post/2D.html"><div class="button"><img src="../../icon/paintbrush.svg" width="16px" /> &nbsp;2D Art </div></a>
 			<a href="../post/games.html"><div class="button"><img src="../../icon/joystick.svg" width="16px" /> &nbsp;Games </div></a>				
-			<a href="../post/code.html"><div class="button"><img src="../../icon/hammer-solid.svg" width="16px" /> &nbsp;Programming Projects</div></a>	
+			<a href="../post/code.html"><div class="button"><img src="../../icon/hammer-solid.svg" width="16px" /> &nbsp;Programming</div></a>	
 
 			
 			
@@ -63,37 +63,41 @@
 			color:#ddd;
 			padding:8px;">
 
-<h1>Stupidly Simple Color Reduction Algorithm</h1>
+<h2>Stupidly Simple Color Reduction Algorithm</h2>
 
 
-<p>I often find myself in need of some color reductio, to reduce colors present in images. So I've written a whole bunch of functions and programs to do just this. I prefer to have in C code, that I can re-use in various projects and use to automate tasks or use in build scripts.</p>
+<p>I often find myself needing to reduce the number of colors present in images. So often that I've written a whole bunch of functions and programs to be able to do it from the command line or from scripts, or have the functionality embedded where it's needed. It's nice to be able to automate stuff like this.</p>
 
-<p>For the last two years I've been using Median cut, which works. But lately I found myself wanting to Bias the output for different images.</p>
+<p>For the last two years I've been using Median cut for most things, which works. But lately I found myself wanting to Bias the output for different images.</p>
 
 <p>I decided to just start from scratch with an idea of an absolute brute force algorithm that suddenly entered my head.</p>
 
 <ul>
-  <li>Have a palette with "too many" colors</li>
+  <li>Have a palette with "too many" colors, preferably in L*a*b color space.</li>
 
   <li>Find the pair of colors with the lowest score, ie. the two most similar* colors.</li>
 
-  <li>Find the two colors that are the most similar.</li>
-
   <li>Merge the two colors** </li>
 
-  <li>Repeat from step 3 until only the desired number of colors remeain.</li>
+  <li>Repeat from step 3 until only there are few enough colors.</li>
 </ul>
 
 <p>*Biased for the number of occurances (uses in the image), and in other ways as well.</p>
 
 <p>**Either ick the one used the most, or calculate average. Another oppertunity for added biases.</p>
 
- Rather than go in an tweak the existing implementation,  for the most situations. But, sometimes I'm
+<p>One step I didn't mention in the above list is the conversion to L*a*b colorspace.</p>
+
+<p>The downside to the simplicity is the speed. It's absolutely brute force. For every color you remove, you must iterate every color against every other color, which really adds up if the initial number of colors is large.</p>
+
+With a 1000 color image reduced down to 16, it's really no issue. But once we get to 4000, it's starts to really slow down a lot.</p>
+
+<p>I will try to fix this next time I sit down with it, to see if there's some simple data structure or hack that could drastically improve the speed. Or maybe I should go back to the Median Cut implementation and try to tweak that. (MC is incredibly fast by comparison).</p>
+
+<p>After that I'll come back here to finish this post. Until then!</p>
 
 
-
-
-
+<!-- 
 <p>collected a couple of    
 
 <h2>Off topic</h2>
@@ -111,6 +115,7 @@
 </ol>
 
 <p>I have tried using Median Cut with slightly worse results, as well as k-means (with terrible results as well as unpredictibility). I may have been doing something wrong in my Median Cut implementation so I will revisit that little project at some point. Another idea would be to use Gimps command line interface to reduce colors, figuring out that may take just as long though, and it's nicer to have something small and simple in C that I can use for other things as well with very little effort, for example in the skybox generator.</p>
+-->
 
 <br>
 <br>
