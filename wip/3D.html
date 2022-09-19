@@ -47,22 +47,5 @@
 <br>
 <br>
 <br>
+<p><i>More to come soon...</i></p>
 
-
-
-
-<h2>Off topic</h2>
-<h4 id="cr_rant">Color Reduction Automation and Algorthms Rant</h4>
-<p>In my workflow for PS1-stylised games, texture are reduced to use only 16 colors via a separate program that I've written. This enables me to paint my textures directly in Blender (which lacks palette support) and do the color reduction on export. Generating a palette automatically is not <i>as</i> great as maintaining one by hand, but I'm not going to try to do that while painting in Blender, and tabbing back and forward between different editors and having to refresh the image data between them is not great. The results with the automated process is good enough as long as there are not too wildly different hues with too many brightness-levels.</p>
-
-
-
-<p>The algorithm I currently use in the color conversion program is a brute force one that I don't know the name of, if it even has a name. It is very simple, but very slow. So slow that it's only really practical because how fast computers are now, and how my worst case input only have 4096 colors.</p> 
-<ol>
-  <p>Starting off with an array of unique colors (preferably in L*a*b color space), and knowledge of the number of times each color occur in the source image.</p>
-  <li>Find the pair of colors with the lowest score, ie. the two most similar* colors, but biased for the number of occurances.</li>
-  <li>Merge the two colors, (either pick the one used the most, or calculate average).</li>
-  <li>Repeat from step 3 until only N colors remeain.</li>
-</ol>
-
-<p>I have tried using Median Cut with slightly worse results, as well as k-means (with terrible results as well as unpredictibility). I may have been doing something wrong in my Median Cut implementation so I will revisit that little project at some point. Another idea would be to use Gimps command line interface to reduce colors, figuring out that may take just as long though, and it's nicer to have something small and simple in C that I can use for other things as well with very little effort, for example in the skybox generator.</p>
