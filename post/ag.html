@@ -1,0 +1,168 @@
+<html>
+  <head>	
+	<meta charset="UTF-8">
+
+	<meta name="description" content="Portfolio">
+	<meta name="keywords" content="Graphics, Art, Programming">
+	<meta name="author" content="Kristoffer Gustavsson, Qristofer, Nopy">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+	<link rel="stylesheet" type="text/css" href="../style.css">
+	<link rel="icon" href="../icon/favi3.svg">  
+
+
+	<title>Nopy's Stuff</title>
+
+
+  </head>  
+  <body >
+
+	<div class="TMD">
+
+	  <table width="100%" style="margin:0px; padding:0px;">
+		<tr>
+		  
+		  <td width="100px">
+		  </td>
+
+		  <td>
+			
+			<a href="../post/3D.html"><div class="button"><img src="../../icon/blender-1.svg" width="16px" /> &nbsp;3D Art </div></a>
+			<a href="../post/2D.html"><div class="button"><img src="../../icon/paintbrush.svg" width="16px" /> &nbsp;2D Art </div></a>
+			<a href="../post/games.html"><div class="button"><img src="../../icon/joystick.svg" width="16px" /> &nbsp;Games </div></a>				
+			<a href="../post/code.html"><div class="button"><img src="../../icon/hammer-solid.svg" width="16px" /> &nbsp;Programming</div></a>	
+
+			
+			
+			
+			<div style="float:right;">
+			  <a href="https://github.com/qristofer"><div class="button"><img src="../../icon/github-alt-brands.svg" width="16px"/>  </div></a>
+			  <a href="https://discordapp.com/users/171654480960421888"><div class="button"><img src="../icon/discord-brands.svg" width="16px" />  </div></a>
+			  <a href="https://twitter.com/qristofer"><div class="button"><img src="../icon/twitter-brands.svg" width="16px">  </div></a>
+			  <a href="mailto:nopykon@gmail.com?subject=Mail from a visitor"><div class="button" style="margin-right:32px;"><img src="../icon/envelope-solid.svg" width="16px" />  </div></a>
+			</div>
+			<div style="clear:both;"></div>
+		  </td>
+		</tr>
+	  </table>
+	  
+	  <a href="../index.html">
+		<image id="TopSeal" src="../../icon/LongSeal.svg" style="position:absolute; left:32px; bottom:-25%; height:100%;">
+	  </a>
+
+	</div>
+	
+	
+		  <!-- a href="../post/fps.html"><div class="button"><img src="../../icon/fpsgun.svg" width="16px" /> FPS Project</div></a -->	
+		  <!-- a href="../post/js13k.html"><div class="button"><img src="../../icon/js-square-brands.svg" width="16px" /> JS13K </div></a -->
+		  
+
+<div style="max-width:1000px; 
+			min-width:300px; 
+			margin: 0 auto;
+			color:#ddd;
+			padding:8px;">
+
+<h2>Anti-Gravity Racing Prototype</h2>
+
+<p>I love the Wipeout series of racing games, and naturally felt inspired make a similar game myself. The two worries I had beforehand that I wanted to resolve before getting into full development wholeheartedly was:</p>
+<ol>
+  <li><p>The physics. Vehicles must be able to travel at insane speeds and not tunnel through geometry.</p></li>
+  <li><p>Tracks. How to make tracks without spending too much time.</p></li>
+</ol>
+<h3>Physics</h3>
+<p></p>
+<p>I'll let this video convey most of it.</p>
+<video muted controls >
+  <source src="../vid/wroom.mp4" type="video/mp4" />
+</video>
+
+<p> The weird red lines show the collision shape. The physics runs in steps at an absurdly low tic-rate in this case (10Hz IIRC), just to make sure there's no tunneling even at high speeds.
+
+<p>Sorry! The camera is interpolated between physics steps on rendering, but the collision bodies are not, which makes it all very annoying to look at.</p>
+
+<p>Normally, the physics runs at 240Hz because that is more responsive, and even less likely to tunnel.</p>
+
+<p>Seems to work. (Not shown in the video: me driving into walls and edges at weird angles over and over at very high speeds...)</p>
+
+<!--video muted controls >
+  <source src="../vid/AG1.mp4" type="video/mp4" />
+</video-->
+
+
+
+<h3>Tracks</h3>
+<p>Or the asset pipeline if you will. The reason this project is shelfed.</p>
+
+<p>The TLDR version is that I've not yet found a neat asset-pipeline/workflow that allows for quick iteration of track-design while maintaining the quality I want.</p>
+
+<p>You see, I don't want the race-track to always be hovering above (or clipping) the ground, I want it completely merged with the rest of the world and not be obvious that these are completely different meshes.</p>
+
+<p>I'll spare you my long rant on the R & D I've done for this project so far.</p>
+
+<p>We'll see where it ends up. I also have an idea for a "low-poly" "polygon-based" racing game. That would be much simpler.</p>
+
+
+<video muted controls >
+  <source src="../vid/curves.mp4" type="video/mp4" />
+</video>
+<p><i>One of these days I will have to make my own fully-fledged 3D-Editor...</i> This one is just a very basic track-editor I quickly wrote for research purposes. I solves the issues I have with Blenders curves, but, oh no, it doesn't really solve any of my pipeline problems.</p>
+
+
+
+
+<!--
+
+<p>There are issues with Blenders weird way of doing control point orientation for the Curves. It's really easy to mess up the "tilt". Blender simply wasn't made for precision-work in this area.</p>
+
+<p>What I'd need would either be a real proper "level editor", or perhaps to try and use Godot/Unity to see how I would make a game like this there.</p>
+
+<p>Another idea would be to go low-poly and make all the data polygon-based. I could scan "road"-polygons and generate track data from that. (The way I want to make this game really requires that I have smooth curved
+
+could be scanned and used to generate/reconstruct the data I'd need.</p>
+
+
+<!-- I even went in to read Blenders source code for the curve interpolation in order to reproduce it in my own engine. But after that I felt like I should just do things differently. I have solutions for every individual issue, but as a whole it just feels like an unfun hacky mess that I wouldn't want to spend much time making tracks in. I'd rather cut down on my vision here. Perhaps go low poly and ma</p>
+
+<p>Sorry, I have a looong rant about my fighting with Blender over this. I'll spare you the rest of it. It's not that Blender is bad, it's that it was never intended to do these kinds of things. What I need is a custom 3D/level editor, something akin to Hammer, but for my own game, and that would just be a lot of work.</p> 
+<p>I could also perhaps try to use Godot or Unity to see how I would make a game like this there, but then I would lose Everything else that already works so well,</p>
+
+<!-- 
+<p>You seeYes, I am using the curve & array modifiers).</p>
+
+<p>I'm thinking I should go low poly instead
+ 
+<p>With rely on Blenders Array and Curve-modifiers to create the high-poly race tracks.  Unfortunately, if you want to really integrate one mesh to another you will have to apply the modifiers, which means you cannot then go back to tweak the control points for the curved mesh. As soon as you want to add unique details, you're sort of screwed because that means you can't go back to tweak the track design easily.</p>
+
+<p>I also dislike how the control points in Blenders curves behave. It's feels really inprecise and messing up and getting the "tilt" of each point to point where you want it to is a real pain.</p>
+
+<p>The control points and the curves formed between them is very valuable data for the game (for AI, camera, checkpoints, collision etc etc). I wanted to export that data, but it turned out to be difficult because of how Blenders interpolation between the points work (weirdly). I even went in to read Blenders source code in order to reproduce it in my engine... But at that point I felt like I should just do things differently instead, but I'm not sure how. One hack would be to generate very small triangles that exactly follows the curve in Blender. That gives you the  all the data you need</p>
+
+<p>The key is that I don't want to add a lot of extra steps when iterating on track design later.</p>
+
+<p>By comparison, my JS13K racing game does this thing in a much simpler way. The points were just transforms plus length scalars for Back and Forward. It's just like vector graphics, except in 3D. Cubic interpolation between the points. The rotation between two points could gimbal lock in that implementation, but that's easy to fix.<br>&emsp;
+  Getting the mesh-segments to repeat nicely and evenly was slightly more difficult, but that's a different topic. I had the luxury of not needing an editor in that project. For this I do need one. ((( Or do I??? O__o )))</p>
+
+-->
+
+<!--
+<p>Intially I even wanted the vertices of the road to be merged with the surroundings, not relying on depthbuffering. But I may give up on that, unless I go low-poly. Because of blender pipieline  to as opposed to just have the track hover in the air. But at the same time I wanted to be able to re-iterate the track-design easily. You can't just do that in Blender with the curve modifier. If you want to merge two meshes, you must apply the modifier beforehand, and then you can no longer tweak the curves themselves. So quick iteration goes out the window.</p>
+-->
+
+<br>
+<br>
+<br>
+
+</div>
+
+
+<div class="foot">
+  <p>End of page.&emsp;
+	<a href="#top">Top</a>&emsp;
+	<a href="../">Home</a>
+  </p>
+</div>
+
+
+</body>
+</html>
