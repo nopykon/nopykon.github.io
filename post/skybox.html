@@ -65,7 +65,7 @@
 
 <h2>Skybox Rendering</h2>
 
-<p>I needed a way to generate skyboxes for one of my games... </p>
+<p>I wanted skyboxes for my game. I created a skybox generator.</p>
 
 <video width=100% autoplay muted loop> 
   <source src="../vid/nopys_skybox.webm" type="video/webm" >
@@ -103,8 +103,8 @@
 <!-- h3>Ray-Tracing the Terrain</h3>
 <p>It's ray-tracing... Lorem Ipsum</p -->
 <h3>Low hanging fruit for speed</h3>
-<p>To speed the process up, to be able to see the clouds pass by in real time, the screen/skybox-sides are split up into tiles smaller tiles which are rendered in parallel with threads from a thread pool. Each thread also performs the color reduction that is needed for the format my skyboxes are stored in for my game engine.</p>
-<p>Multitreading took it from ~20 frames per second to a solid 60 (on my quad core machine), so this worked better than most things you try to speed up by throwing more cores at it.</p>
+<p>To speed up rendering (to see the clouds pass by in real time), the screen/skybox-sides are split up into tiles smaller tiles which are rendered in parallel with threads from a thread pool. Each thread also performs the color reduction that is needed for the format my skyboxes are stored in for my game engine.</p>
+<p>Multitreading took it from ~20 frames per second to a solid 60 (on my quad core machine), so this worked better than most things you try to speed up by just throwing more cores at it.</p>
 <p>I've made no real efforts to vectorize the computation, but maybe that's the next step. On the other hand, if I <i>really</i> wanted speed I would use the GPU. Maybe I'll move over to that if I need drastically more detailed skyboxes, but for now I'm happy with the simplicity of just using the CPU. The whole thing is only a couple of hundred lines of code, it quickly does what I need it to and it didn't take long to write.</p>
 
 
@@ -130,6 +130,7 @@ But basically each side of the <i>big box</i> is split up into 8x8 quads. This s
 <h3>Color reduction</h3>
 <p>I had some real struggles against the color limitation before coming up with this solution. Because of how noisy and variable the colors in the sky is, 16 colors on a 64x64 texture just didn't cut it. No matter what dithering or color reduction methods I tried. Another solution would've been to use 256-color palettes instead, but that would double the size of the texture map. (My solution use slightly more memory for the CLUTs, but in total, using 4-bit texels instead of 8-bit, it saves far more).</p>
 
+<p>EDIT: My color reduction algorithm has been improved since I created this tool, maybe I could get away with using just one CLUT per 64x64 texture now. Too be concluded.</p>
 <!-- h3>Median-Cut Color Reduction</h3>
 <p>The algorithm used for color reduction is Median-Cut, and it's fast enought to run in real time. Initially I used K-means, which was too slow to make the skybox-generator update at a pleasant rate, and the results were too... random. Shoutouts to Mattias Gustavsson for tipping me off about the algo. He has an excellend single-file implementation of it ( "palettize.h" ). For learning and multi-threading purposes I decided to roll my own.</p -->
 
