@@ -94,6 +94,15 @@ a:hover {
 video { width:100%;}
 
 
+.col2 {
+	columns: 400px 2;
+	column-gap:8px; 
+	row-gap:8px; 
+	margin-bottom: 64px;
+
+}
+
+
 .ce {
 	
 	padding:8px;

@@ -1,10 +1,11 @@
 <h2>Anti-Gravity Racing Prototype</h2>
 
-<p>I love the Wipeout series of racing games, and naturally felt inspired make a similar game myself. The two worries I had beforehand that I wanted to resolve before getting into full development wholeheartedly was:</p>
+<p>I love the Wipeout series and felt compelled to make something inspired by it myself. I started developing a prototype with two worries in mind:</p>
 <ol>
   <li><p>The physics. Vehicles must be able to travel at insane speeds and not tunnel through geometry.</p></li>
   <li><p>Tracks. How to make tracks without spending too much time.</p></li>
 </ol>
+
 <h3>Physics</h3>
 <p></p>
 <p>I'll let this video convey most of it.</p>
@@ -12,39 +13,33 @@
   <source src="../vid/wroom.mp4" type="video/mp4" />
 </video>
 
-<p> The weird red lines show the collision shape. The physics runs in steps at an absurdly low tic-rate in this case (10Hz IIRC), just to make sure there's no tunneling even at high speeds.
+<p> The weird red lines show the collision shape. The physics runs in steps at an absurdly low tick-rate (10Hz IIRC), just to make sure tunneling does not occur.</p>
 
 <p>Sorry! The camera is interpolated between physics steps on rendering, but the collision bodies are not, which makes it all very annoying to look at.</p>
 
 <p>Normally, the physics runs at 240Hz because that is more responsive, and even less likely to tunnel.</p>
 
-<p>Seems to work. (Not shown in the video: me driving into walls and edges at weird angles over and over at very high speeds...)</p>
+<p>Anyhow, it seems to work well. (Not shown in the video: me driving into walls and edges at weird angles over and over at very high speeds...)</p>
 
 <!--video muted controls >
   <source src="../vid/AG1.mp4" type="video/mp4" />
 </video-->
 
-
-
 <h3>Tracks</h3>
-<p>Or the asset pipeline if you will. The reason this project is shelfed.</p>
+<p>Or the asset pipeline if you will. The big reason this project is shelfed.</p>
 
 <p>The TLDR version is that I've not yet found a neat asset-pipeline/workflow that allows for quick iteration of track-design while maintaining the quality I want.</p>
 
 <p>You see, I don't want the race-track to always be hovering above (or clipping) the ground, I want it completely merged with the rest of the world and not be obvious that these are completely different meshes.</p>
 
-<p>I'll spare you my long rant on the R & D I've done for this project so far.</p>
-
-<p>We'll see where it ends up. I also have an idea for a "low-poly" "polygon-based" racing game. That would be much simpler.</p>
-
+<p>We'll see where it ends up, if anywhere. I also had an idea for a "low-poly" more "polygon-based" racing game, sorta like Crash CTR or Mario Kart. That would be simpler, maybe I'll do that instead.</p>
 
 <video muted controls >
   <source src="../vid/curves.mp4" type="video/mp4" />
 </video>
 <p><i>One of these days I will have to make my own fully-fledged 3D-Editor...</i> This one is just a very basic track-editor I quickly wrote for research purposes. I solves the issues I have with Blenders curves, but, oh no, it doesn't really solve any of my pipeline problems.</p>
 
-
-
+<p>Laters!</p>
 
 <!--
 
