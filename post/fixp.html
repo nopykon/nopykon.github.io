@@ -205,7 +205,7 @@ As you may have figured out, I'm very inspired by the PS1 and I always wanted to
 -->
 
 <h4>Overflow</h4>
-<p>A challenge when using fixed-point is to avoid integer overflow. It easily occurs when performing multiplication and division.</p>
+<p>A challenge when using fixed-point is to avoid integer overflow. It happens easily with because of the potentially large left-shift especially when performing multiplication.</p>
 
 <p>For example, on a 16-bit CPU using 8.8 fixed-point format; even multiplying 1.0 with 1.0 may cause trouble.</p>
 
@@ -216,7 +216,7 @@ As you may have figured out, I'm very inspired by the PS1 and I always wanted to
 
 <p>On a 32 or 64-bit CPU, this case (256*256) wouldn't cause overflow as we have many bits to spare, but you need to watch out when using larger numbers, or perhaps more fractional bits.</p>
 
-<p>In truth, it's not different from regular integer multiplication. It's just easy to blow up because of the large left-shift, especially when chaining multiplications.</p>
+
 
 <!-- p>Perhaps if x is large when doing the fixed point equivalent of 'x*x*x' <br>&emsp;
 x * x * x  >> 8 + 8<br>
