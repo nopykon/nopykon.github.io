@@ -105,7 +105,7 @@ As you may have figured out, I'm very inspired by the PS1 and I always wanted to
 <p>This is where it gets tricky, and even more so considering the risk of overflow (more on that later).</p>
 
 <p>Because the integers are left-shifted, multiplying produces a much larger number than we want. 1.0 * 1.0 should produce 1.0 again, but 256*256 produces 65356, which is wrong.<br>&emsp;
-  In fact, it's too large by a factor of 256, or 8 bits. So we need to either divide by 256 (1<<number of fractional bits), or simply right-shift by the number of fractional bits. </p>
+  In fact, it's too large by a factor of 256, or 8 bits. We must divide or right-shift.</p>
 
 <p>
   &emsp;
@@ -117,12 +117,12 @@ As you may have figured out, I'm very inspired by the PS1 and I always wanted to
 
 <p>There <b>are</b> differences between right-shifting and dividing if the input is negative. For example (-1)/256 will be 0 whereas (-1)>>8 will remain -1.</p>
 
-<p>Safest bet is to always use division. When dividing by a literal like '256', the compiler will most likely figure out that the (expensive) division can be replaced by a shift, and if some additional (cheap) instructions if the input is signed.</p>
+<p>Safest bet is to always use division. When dividing by a literal like '256', the compiler will most likely figure out that the (expensive) division can be replaced by a shift, and some additional (cheap) instructions if the input is signed.</p>
  
 <p>I personally like to use >> when I know the input is going to be positive, or where small errors are negligible.</p>
 
 <h3>Division</h3>
-<p>Performing division is similar to multiplication, just the other way around. 1.0/1.0 should be 1.0, but 256/256 is just 1, which if converted back to decimal would be 1.0/256.0 or 0.00390625. So before performing the division, we either multiply the input by 256 again, or left-shift it by 8.</p>
+<p>Performing division is similar to multiplication, just the other way around. 1.0/1.0 should be 1.0, but 256/256 is just 1, which if converted back to decimal would be 1.0/256.0 or 0.00390625. So before performing the division, we either multiply the input by 256 again, or left-shift it by 8. </p>
 
 <p>&emsp;
   ratio = dividend * 256 / divisor<br>&emsp;
@@ -149,16 +149,16 @@ As you may have figured out, I'm very inspired by the PS1 and I always wanted to
 
 <p>That is 17 bits. Even though you should right-shift by 8 after the operation, the overflow has already happened on a 16-bit CPU. It's something you must be aware of. (On some CPU's there are flags that will be set when overflow happens (CF, OF on x86), the result may still be useful for continuing to work towards a desired outcome. ) </p>
 
-<p>On a 32 or 64-bit CPU, this case (256*256) wouldn't cause overflow as we have many bits to spare, but you still need to watch out when using larger numbers, or perhaps more fractional bits.</p>
+<p>On a 32 or 64-bit CPU, this case (256*256) wouldn't cause overflow as we have many bits to spare, but you need to watch out when using larger numbers, or perhaps more fractional bits.</p>
 
-<p>In truth, it's no different from multiplication with regular integers, it's just easy to blow up because of the large left-shift, especially when chaining multiplications. </p>
+<p>In truth, it's not different from regular integer multiplication. It's just easy to blow up because of the large left-shift, especially when chaining multiplications.</p>
 
 <!-- p>Perhaps if x is large when doing the fixed point equivalent of 'x*x*x' <br>&emsp;
 x * x * x  >> 8 + 8<br>
 You may want to do<br>&emsp;
 (x*x>>8) * x >> 8</p -->
 
-<p>One way to avoid overflow is to separate the integer and fractional parts:</p>
+<p>One way to avoid overflow is to separate the integer and fractional parts and perform the operation in multiple steps:</p>
 
 <p>
   aI = a >> 8<br>
@@ -172,6 +172,9 @@ You may want to do<br>&emsp;
   r += af * bf >> 8<br>
 </p>
 
+<p>There are also checks that can be done ahead of an operation. One favorite of mine is to get the most significance set bit of a variable, which can be done cheaply on most CPU's with a single instruction.
+  <br>&emsp;If there are 16 leading zeroes, you know how much you can left-shift something by (in order to get the maximum precision when dividing) or how large numbers you can multiply it with safely.</p>
+<p>Typically though, I will prefer to just know the possible range of values that will enter a function. With a well designed program you rarely need to perform these checks. But use asserts in debug builds!</p>
 
 <h3>Conclusion</h3>
 <p>In contrast to floating-point, where numbers are distributed with greater separation the further away from 1.0 you get, with integers they are uniformly spaced out, and thus you will reach INT_MAX sooner than you''d reach FLT_MAX.</p>
