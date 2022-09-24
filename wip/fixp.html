@@ -3,7 +3,7 @@
 <p>The Playstation and other old computers did not have built-in support for floating-point math. Technically, floating-point calculations can be done in software, but that is often too slow and impractical for the purpose of games where speed is crucial.<br>&emsp;
 As you may have figured out, I'm very inspired by the PS1 and I always wanted to understand how those games from my childhood were made. I decided to make an entire game engine using nothing but fixed-point arithmetic in order to get comfortable with it. Ironically, doing so has also thought me to understand and appreciate the floating-point standard (IEEE-754) a lot more as well.</p> 
 
-<p>In this post I'll try to describe the fixed-point format and how to perform fixed-point arithmetic.</p>
+<p>In this post I'll try to describe the fixed-point format and how to perform fixed-point arithmetic. A part 2 with more specific applications of it may appear later.</p>
 <!-- p>After a couple of years of using it, I'm very confortable with the basic operations. The biggest issue that are still find annoying is the risk of integer overflow, typically when the product of a multiplication becomes too large to contain in a 16-bit or 32-bit integer.</p -->
 
 
@@ -173,7 +173,7 @@ You may want to do<br>&emsp;
 </p>
 
 <p>There are also checks that can be done ahead of an operation. One favorite of mine is to get the most significance set bit of a variable, which can be done cheaply on most CPU's with a single instruction.
-  <br>&emsp;If there are 16 leading zeroes, you know how much you can left-shift something (in order to get the maximum precision when dividing) or how large numbers you can multiply it with safely.</p>
+  <br>&emsp;If there are 16 leading zeroes, you know how much you can left-shift something (in order to get the maximum precision when dividing, ie. 1000/3 gives you more information than 10/3) or how large numbers you can multiply it with safely.</p>
 <p>Typically though, I will prefer to just know the possible range of values that will enter a function. With a well designed program you rarely need to perform these checks. But use asserts in debug builds!</p>
 
 <h3>Conclusion</h3>
