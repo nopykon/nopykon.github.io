@@ -37,8 +37,8 @@ As you may have figured out, I'm very inspired by the PS1 and I always wanted to
   00000001 01000000<br>
   And with the fixed-point dot at the 8th bit:<br>&emsp;
   00000001.01000000</p>
-<p>So there's nothing strange or mysterious going on here. It's like if you were to express 0.9 meters by writing 90 centimeters. Or instead of 0.75 feet write 9 inches. Except here, your meter/feet unit would be be some power of two of the cm/inch unit, not 100 or 12. A useful quirk.</p>
-
+<p>So there's nothing strange or mysterious going on here. It's like if you were to express 0.9 meters by writing 90 centimeters. Or instead of 0.75 feet write 9 inches. Here, the ratio between your feet and inch would be come at some power of two. A useful quirk.
+  <br>&emsp; For ease of reading, I'll stick to the 256/8-bit/2^8-ratio throughout this post. Deciding on the number of bits is a balance between fractional precision, upper limit, size and practicality.</p>
 <p>
 <table >
   <tr> 
@@ -76,8 +76,6 @@ As you may have figured out, I'm very inspired by the PS1 and I always wanted to
 </table>
 </p>
 
-
-<p>For easy of reading, I'll stick to X.8 throughout this post, but you can use any number of fractional bits. There are no rules. Use what's practical. I use a wide range of formats in my games.</p> 
 
 <!-- h4>Conversion</h4>
 <p>Conversion from float to X.8 fixed-point can be done in this way in C:
