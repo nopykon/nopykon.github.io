@@ -1,13 +1,9 @@
+
 /*
 
-  main.js
+  math.js
 
 */
-let mouse_x = 0;
-let mouse_y = 0;
-let mouse_nx = 0;
-let mouse_ny = 0;
-let mouse_down = false;
 
 let M = Math,sqrt = M.sqrt, cos = M.cos,sin = M.sin,abs = M.abs,min = M.min,max = M.max,pow = M.pow,PI = M.PI,
 	TAU = M.PI*2,fract = a => a%1.,	floor = a => M.floor(a),clamp = (a,b,c) => a<b?b:a>c?c:a,
@@ -21,12 +17,25 @@ let set3 = (d,x,y,z) => (d[0]=x,d[1]=y,d[2]=z,d),
 	mul3 = (d,a,b) => (d[0]=a[0]*b[0],d[1]=a[1]*b[1],d[2]=a[2]*b[2],d),
 	ads3 = (d,a,b,t) => (d[0]=a[0]+b[0]*t,d[1]=a[1]+b[1]*t,d[2]=a[2]+b[2]*t,d),
 	scale3 = (d,a,s) => (d[0]=a[0]*s,d[1]=a[1]*s,d[2]=a[2]*s,d),
+	max3 = (a,b,c) => (a>b?(a>c?a:c):(b>c?b:c)),
 	dot = (a,b) => a[0]*b[0]+a[1]*b[1]+a[2]*b[2],
 	cross = (d,a,b) => ( d[0]=a[1]*b[2] - a[2]*b[1],
 						 d[1]=a[2]*b[0] - a[0]*b[2],
 						 d[2]=a[0]*b[1] - a[1]*b[0],
 						 d),
-	norm = (d,s) => scale3(d,s, 1/sqrt(dot(s,s)) )
+	norm = (d,s) => scale3(d,s, 1/sqrt(dot(s,s)) ),
+	lerp3 = (d,a,b,t) => (d[0]=a[0]*(1-t) + b[0]*t,
+						  d[1]=a[1]*(1-t) + b[1]*t,
+						  d[2]=a[2]*(1-t) + b[2]*t,d),
+	scale2 = (d,a,s) => (d[0]=a[0]*s,d[1]=a[1]*s,d),
+	dot2 = (a,b) =>  a[0]*b[0] + a[1]*b[1],
+	norm2 = (d,s) => scale2(d,s, 1/sqrt(dot2(s,s)) ),
+	cross2 = (a,b) =>  (a[0]*b[1] - a[1]*b[0]),
+	lerp2 = (d,a,b,t) => (d[0]=a[0]*(1-t) + b[0]*t,
+						  d[1]=a[1]*(1-t) + b[1]*t,d)
+						  
+
+
 
 
 let rnd = (s) => ( s[0] = s[0]+(s[0]<<1)+(s[0]>>1) + 777, s[0])
@@ -39,14 +48,18 @@ let V0=[0,0,0,0],V1=[0,0,0,0],V2=[0,0,0,0],V3=[0,0,0,0],
 	R0=[0,0,0,0],R1=[0,0,0,0],R2=[0,0,0,0],R3=[0,0,0,0];
 
 
+//vertex buffer 
 let Rv=[]
 for(let i=0;i<1024;++i)	Rv[i] = [0.,0.,0.,1.]
 
+/*
 
-function textri(image, vv)
+  
+
+*/
+function texpol(image,A,B,C)
 {
-	let A = vv[0], B = vv[1], C = vv[2]
-
+	//let A = vv[0], B = vv[1], C = vv[2]
     let ax = B[0]-A[0], ay = B[1]-A[1];
     let bx = C[0]-A[0], by = C[1]-A[1];
 
@@ -67,8 +80,8 @@ function textri(image, vv)
 	ct.save();
 	ct.beginPath();
 	ct.moveTo(A[0],A[1]);
-	for( let i=1;i<vv.length;++i)
-		ct.lineTo(vv[i][0],vv[i][1])
+	ct.lineTo(B[0],B[1])
+	ct.lineTo(C[0],C[1])
 	ct.clip();
 
 	ct.transform(a, d,
@@ -78,8 +91,8 @@ function textri(image, vv)
 	ct.restore();
 }
 
-let inn=[],out=[] ;//,inn_sz,out_sz;
-for(let i=0;i<16;++i)inn[i]=[0,0,0,0],out[i]=[0,0,0,0] ; 
+// let inn=[],out=[] ;//,inn_sz,out_sz;
+// for(let i=0;i<16;++i)inn[i]=[0,0,0,0],out[i]=[0,0,0,0] ; 
 
 let CT = [[1,0,0],[0,0,1],[0,-1,0],[0,-5,1]];
 let MT = [[1,0,0],[0,1,0],[0,0,1],[0,0,0]];
@@ -112,6 +125,12 @@ function mmul( D,A,B )
 			t += A[k][j] * B[i][k];
 		D[i][j] = t;
 	}
+}
+
+function mmulv( d,M,v ) {	
+	for(let i=0; i<3; ++i) 
+		d[i] = M[0][i]*v[0] + M[1][i]*v[1] + M[2][i]*v[2] ;
+	return d;
 }
 
 function mmulv_DX(d,m,s){
@@ -147,18 +166,22 @@ function mmulv_DX(d,m,s){
 */
 let xfoc = 0;
 let yfoc = 0;
+let focal = 1.;
 let focspan = 0;
 let foc_x = 0;
 let foc_y = 0;
 
 function setFocal( f )
 {
+	focal = f ; 
+
 	yfoc = 2*f; 
 	xfoc = 2*cv.height*f / cv.width;
 	focspan = cv.height*f //*.5
 	foc_x = cv.width * .5;
 	foc_y = cv.height * .5;
 }
+
 function cull(p)//inside_frustum( p ) 
 {
 	if( p[2] > -.1 ||
@@ -191,72 +214,68 @@ var tp = []
 for( let i=0 ; i<2048; ++i )
 	tp[i]=[1.,1.,1.,false]
 
-const SCALE = 1. / 768
-function scalepos( Pv ){
-	for(let i=0;i<Pv.length;++i)
-		for(let j=0;j<3;++j)
-			Pv[i][j] *= SCALE
-}
-
-scalepos(Dude.Pv);
-scalepos(Head.Pv);
-scalepos(Nopy.Pv);
-scalepos(Birb.Pv);
-scalepos(Seal.Pv);
-scalepos(Cheke.Pv);
-scalepos(Kart.Pv);
-scalepos(Terrain.Pv);
-scalepos(Shadow.Pv);
-
 let zlist = []
-let zsortf = ( a, b) =>  (a[0][4] - b[0][4])  
-let edgen=[[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0]]
+let zsortf = ( a, b) =>  (a[0][4] - b[0][4]) 
+//function zfunc( a, b ){	return a[3]-b[3] }
+//let edgen=[[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0]]
 
+//TODO: probably tri's 
 function zlist_draw()
 {
 	for( let i=0;i<zlist.length;++i)
 	{
 		let P = zlist[i] 
-		if( 0 ) {// edge fix
-			let x = 0, y =0 ;
-			for( let j=0;j<P.length; ++j )
+		//let Img = P[1][4];
+		for( let k=2;k<P.length; ++k)
+		{
+			let a = P[0], b = P[k-1], c = P[k] ;
+			//if( 0 ) // NOTE: edge fix / hack, dumbly scale from center
 			{
-				x += P[j][0]
-				y += P[j][1]
-			}
-			x *= 1/P.length
-			y *= 1/P.length
-			for( let j=0;j<P.length; ++j)
-			{ 
-				let dx = P[j][0]-x ;
-				let dy = P[j][1]-y ;
-				let d = dx*dx +dy*dy ;
-				if( d > 0 ){
-					d = 1/sqrt(d);
-					P[j][0] += dx*d;
-					P[j][1] += dy*d;
-				}
+				
+				let x = (a[0]+b[0]+c[0])*(1/3) ; 
+				let y = (a[1]+b[1]+c[1])*(1/3) ;
+				
+
+				let ax = a[0]-x, ay = a[1]-y
+				let bx = b[0]-x, by = b[1]-y
+				let cx = c[0]-x, cy = c[1]-y
+				let aa = ax*ax + ay*ay ; 
+				let bb = bx*bx + by*by ; 
+				let cc = cx*cx + cy*cy ; 
+				aa = max3(aa,bb,cc);
+				if(aa > 0 )
+					aa = 1. / sqrt(aa) ;
+
+				texpol(suit,//Img,
+					   set4( R0, a[0]+ax*aa,			a[1]+ay*aa,			a[2], a[3] ),
+					   set4( R1, b[0]+bx*aa,			b[1]+by*aa,			b[2], b[3] ),
+					   set4( R2, c[0]+cx*aa,			c[1]+cy*aa,			c[2], c[3] ))
 			}
 		}
-		textri(img, P )
 	}
 	zlist = []
 }
 
 
-function drawMesh( o, bias ) //meshDraw
+function drawMesh( o, bias, image ) //meshDraw
 {
+	if( undefined === image )
+		image = suit;//img;
 
-	if( !bias )
+	if( undefined === bias )
 		bias = 0;
 		
-	let Pv = o.Pv, Tv = o.Tv, Nv = o.Nv, Iv = o.Iv 
+
+	image = suit;
+	bias = 0;
+
+	let Pv = o.Pv, Tv = o.Tv, /*Nv = o.Nv,*/ Iv = o.Iv 
 	for( let i=0;i<Pv.length;++i)
 		tmulv_DX( tp[i], DX, Pv[i] );
 
 	for( let i=0;i<Pv.length;++i)
 	{	
-		tmulv_DX( tp[i], DX, Pv[i] );
+		//tmulv_DX( tp[i], DX, Pv[i] );
 		tp[i][3]=cull( tp[i])
 		zdiv(tp[i],tp[i])
 	}
@@ -276,234 +295,75 @@ function drawMesh( o, bias ) //meshDraw
 				inn = true;
 			let u = Tv[ Iv[ i + STRIDE*j	+ 1 ]  ]
 			zmin = min(zmin, p[2])
-			pl.push([p[0],p[1],u[0],u[1],0])
+			pl.push([p[0],p[1],u[0],u[1]])
 		}
 		i += STRIDE * vc  ; 
 
 		if( inn ){
 			pl[0][4] = zmin + bias;
+			//pl[1][4] = image //;zmin + bias;
 			zlist.push(pl)
 		}
 	}
 }
 
+
 /*
 
  game.js
-
+ 
 */
-let cz = 0, czv = 0 ;
-let cx = 0, cxv = 0
-let cy = 0, cyv = 0
+let mouse_x = 0;
+let mouse_y = 0;
+let mouse_nx = 0;
+let mouse_ny = 0;
+let mouse_down = false;
+
+let G = {
+	tick: 0,
+	state: 0
+};
 function game_step()
 {
-	cx += cxv
-	cy += cyv
-	cz += czv
-	if( mouse_down )
-	{
-		cxv = ((mouse_nx*2-1) - cx) * .1
-		cyv = ((mouse_ny*2-1) - cy) * .1
-		czv = (1 - cz )*.1
+	switch( G.state ) {
+	case 0:
+		state = 1 ; 
+		break;
+	case 1:
+
+		break;
 	}
-	else
-	{
-		cxv = (0 - cx) * .1
-		cyv = (0 - cy) * .1
-		czv = (0 - cz )*.1
-	}
+
+	++G.tick;
 }
-
-function noise(p)
-{
-	if( abs(p[0])>3 )
-		p[2] = ( sin( p[0]*1.442 ) + sin(p[1]*2.233) ) * .2 ;
-	return p;
-}
-
-function wave( p, x, y ){
-
-	let c = cos( x*.6+ y*.3 + tick*.01 )
-	
-	p[0] = x
-	p[1] = y
-	p[2] = c
-	return p
-}
-
 
 function game_render(ST)
 {
-	
 
-	ct.setTransform(1,0, 0,1, 0,0);
-	
-	{
-		let grd = ct.createLinearGradient(0, 0, 0, cv.height/1.8);
-		grd.addColorStop(0, "#0af");
-		grd.addColorStop(1, "#000");
-		ct.fillStyle = grd;
-		ct.fillRect(0, 0, cv.width,cv.height )///2 )
-	}
-	
-	ct.imageSmoothingEnabled = false;
-
-	ct.save();
-	ct.setTransform(1,0,
-					0,-1,
-					0,cv.height);
-
-	/*
-
-	  cam setup
-
-	*/
-
-	let f = cz + czv*ST
-	setFocal( 1. * (1-f) + 3 * f )
-	set3(CT[3],.5,-5,.75 )
-
-	let yaw =  -(cx+cxv*ST)*.5
-	let pit =  -(cy+cyv*ST)*.5
-
-	yaw += cos((tick + ST)*.0025 ) *.01
-	pit += .175+cos((tick + ST)*.0025 ) *.01
-	
-	let P = [[1,0,0], [0,cos(pit),sin(pit)],[0,-sin(pit),cos(pit)]]
-	let Q = [[cos(yaw),sin(yaw),0],[0,0,1],[sin(yaw),-cos(yaw),0]]
-	mmul(CT,Q,P)
-	
-	tpovDX(DX,CT,ID);
+	ct.clearRect(0,0,cv.width,cv.height);
+	ct.fillStyle = '#fff';
+	ct.fillRect(100,100,200,200);
 
 
-	if(1)
-	{
-
-		//checkered flag
-		set3( MT[0], 2,0,0)
-		set3( MT[1], 0,0,2)
-		set3( MT[2], 0,-2,0)
-		set3( MT[3], 0,16,0)
-		tpovDX(DX,CT,MT);
-
-
-		ct.fillStyle = 'rgba(0,0,0,.5)'
-		ct.beginPath();
-
-		const N = 8
-		let W = 0|((cv.width * N) / cv.height) ;  
-		for(let y=0;y<=N; ++y){
-			for(let x=-W+(y&1);x<=W;x+=2){
-				let ta = tmulv_DX(V0, DX, wave(R0,x+0,	y+0,-1) )
-				let tb = tmulv_DX(V1, DX, wave(R0,x+1,	y+0,-1) )
-				let tc = tmulv_DX(V2, DX, wave(R0,x+1,	y+1,-1) )
-				let td = tmulv_DX(V3, DX, wave(R0,x+0,	y+1,-1) )
-
-				if( cull(ta) ||	cull(tb) ||	cull(tc) ||	cull(td) )//any in
-				{
-					let a = zdiv(R0, ta)
-					let b = zdiv(R1, tb)
-					let c = zdiv(R2, tc)
-					let d = zdiv(R3, td)
-
-					ct.moveTo( a[0],a[1] )
-					ct.lineTo( b[0],b[1] )
-					ct.lineTo( c[0],c[1] )
-					ct.lineTo( d[0],d[1] )
-				}
-			}
-		}
-		ct.fill()
-
-	
-		//NOPY'S SEAL KART RACING TITLE
-		let a = sin( tick*.005 )*.15
-		let s = 5
-		let C = cos(a)*s, S =sin(a)*s
-		set3( MT[0], C,S,0)
-		set3( MT[1], 0,0,s)
-		set3( MT[2], S,-C,0)
-		set3( MT[3], 0,16,10)
-		tpovDX(DX,CT,MT);
-		drawMesh(Nopy);
-		zlist_draw();
-
-	}
-	
-	//draw meshi
-	{
-		
-		tpovDX(DX,CT,ID);
-		drawMesh(Terrain, -1);
-
-		let a=-tick*.0025, s = 1
-		let C = cos(a), S =sin(a)
-
-		let q = sin(tick*.05)*.025 
-		s -= q
-		q+=1
-
-		set3( MT[0], C*s,S*s,0)
-		set3( MT[1],-S*s,C*s,0)
-		set3( MT[2], 0,0,q)
-		set3( MT[3], -.5,0,0)
-		tpovDX(DX,CT,MT);
-		drawMesh(Seal);
-		drawMesh(Shadow);
-		
-		set3( MT[3], .5,-1,0)
-		tpovDX(DX,CT,MT);
-		drawMesh(Birb);
-		drawMesh(Shadow);
-
-		set3( MT[3], +1.5,0,0)
-		tpovDX(DX,CT,MT);
-		drawMesh(Cheke);
-		drawMesh(Shadow);
-
-
-		s = 1
-		a = 5
-		C = cos(a), S =sin(a)*s
-		set3( MT[0], C*s,S*s,0)
-		set3( MT[1],-S*s,C*s,0)
-		set3( MT[2], 0,0,s)
-		set3( MT[3],-1,-1.5,0)
-		tpovDX(DX,CT,MT);
-		drawMesh(Kart);
-		drawMesh(Shadow);
-
-		a = tick*.005
-		C = cos(a), S =sin(a)*s
-		set3( MT[0], C*s,S*s,0)
-		set3( MT[1],-S*s,C*s,0)
-		set3( MT[2], 0,0,s)
-		set3( MT[3],2,-1.5,0)
-		tpovDX(DX,CT,MT);
-		drawMesh(Kart);
-		drawMesh(Shadow);
-
-
-		//
-		zlist.sort( zsortf )
-		zlist_draw();
-	}
 }
-
 
 
 /*
 
+  main.js
 
   
-
 */
 
 let cv,ct,rid;
 let tick=0,last_time = 0.,last_frame = 0.,frame = 0 ;
 
-let img = new Image();
-img.src = "tex.png";
+// let img = new Image();
+// img.src = "tex.png";
+
+// let suit = new Image();
+// suit.src = "suit.png";
+
 
 let last_t=now();
 
@@ -529,31 +389,36 @@ function r_update()
 	rid = requestAnimationFrame( r_update, cv ) ;
 }
 
-function init_game()
-{
-	cv = document.getElementById("cv");
-	ct = cv.getContext('2d');
-	ct.imageSmoothingEnabled = false;
-	
 
+
+
+
+
+/*
+
+  
+
+*/
+function init()
+{
+	cv = document.getElementById("canvas");
+	ct = cv.getContext('2d');
+
+	cv.addEventListener('contextmenu', (e) => {	e.preventDefault();	})
 	cv.addEventListener('mousemove', function(e) {
-		
 		var rect = cv.getBoundingClientRect();
 		mouse_x = e.clientX - rect.left ;
 		mouse_y = e.clientY - rect.top ;
 		
 		mouse_nx = mouse_x / rect.width
 		mouse_ny = mouse_y / rect.height
-
 	}, false);
-	
 	cv.onmousedown = function(e){	mouse_down = true;	}
 	cv.onmouseup = function(e){	mouse_down = false;	}
-
-
+	
 	function resize()//resolution
 	{
-		if( false ) // low-rez mode  
+		if( 0 ) // low-rez mode  
 		{
 			const H = 360
 			cv.width = 0|(H*cv.clientWidth)/cv.clientHeight;
@@ -564,12 +429,11 @@ function init_game()
 			cv.height = cv.clientHeight;
 		}
 	}
-
 	window.addEventListener('resize', resize, false);
 	resize();
-
+	//ct.imageSmoothingEnabled = false;
 	rid = requestAnimationFrame( r_update, cv ) ;
 }
 
-init_game();
+init();
 
