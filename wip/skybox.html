@@ -6,22 +6,23 @@
   <source src="../vid/nopys_skybox.webm" type="video/webm" >
 </video>
 
-
 <h3>Ray-Tracing</h3>
-<p>It's ray-tracing, which you can read about in a lot of places. The Art of Code on youtube is one excellent source. There really isn't anything fancy going on here in terms of math. Just ray intersection, a bunch of dots and crosses/wedges, and a lot of interpolation.</p>
+<p>It's ray-tracing, which you can read about in a lot of places, this will not be a tutorial. (The Art of Code on youtube is one excellent source.) There really isn't anything fancy going on here in terms of math. Ray intersection and a bunch of dots and crosses/wedges, and lots of interpolation.</p>
 
-<p>Here are some of the lego pieces used to make the whole:</p>
+<p>Here are some of the components of the ray-tracer:</p>
 <ul>
-  <li> Noisemap (not Perlin), just an array of random() values that are interpolated when sampled.</li>
-  <li> Sky-gradient, blending between colors depending on the direction of the ray.</li>
+  <li> A noise map (not Perlin), just a 2D-array of random() values that are interpolated when sampled (bilinear filtering).</li>
+  <li> Sky-gradient, blending between colors depending on the direction of the ray. If it points mostly towards zenith, mostly use the zenith color (likely deep blue).</li>
+  <li> Sun-rendering, by taking the dot product of the ray direction and the sun to some high power.</li>
   <li> Clouds, sampling the noise map and adding some color.</li>
-  <li> Sun-rendering, by just taking the dot product of the ray direction and the sun to some high power.</li>
-  <li> Planets-rendering, ray sphere intersection with textures bleneded from the X, Y and Z axes.</li>
+
+  <li> Planets-rendering, ray sphere intersection with textures projected from X, Y and Z-axes and mixed with the surface normal components as weights.</li>
 
   <li> Noise Landscape/Terrain-rendering, lighting and with cloud shadows and different textures and colors depending on elevation.</li>
   <li> Water and water-reflections, surface determined by accumulated sine waves. Sea and land and beaches decided by the elevation.</li>
 </ul>
 
+<p>There's "ray vs. triangle" instersection happening, and no meshes. I did have convex shapes (besides spheres) at one point, just for fun, but if I wanted to render something like a hand-modelled city, I would need to actually think about how to make it a bit faster. Probably using a spatial grid... or a kd-tree. Hmmm. At present, it runs at 60 Hz using all cores. "Buy why does it need to run fast, isn't this for rendering static skyboxes?". Because it's fun to make things go fast, and also useful not to have to sit and wait for 10m after slightly turning the knob on some aesthetical parameter.</p>
 
 
 
@@ -29,10 +30,7 @@
 <img src="../img/skyboxC.gif" width=49% />
 <p>Noise.</p>
 
-
 <br>
-
-
 
 <!-- h3>Ray-Tracing the Terrain</h3>
 <p>It's ray-tracing... Lorem Ipsum</p -->
