@@ -1,5 +1,0 @@
-<img src="../img/memory.gif" width=100% ></img> 
-<h4>Free list</h4>
-<p style="font-size:12px;"><b>Memory allocation and deletion for game objects of random sizes (even though they're all "cirlces"). Orange means free.</p>
-
-<p style="font-size:12px;">Implemented like a Free list - keeping track of free space instead of the used. While I find the textbook implementation of the data structure rather elegant, storing the Hole-information in Linked list nodes at their actual memory location; my code use a linear array and bin-search, because I wanted to be able to search it quickly for game engine reasons. It works on 16B blocks and use relative indices rather than "real" pointers, because I like it when structures are trivial to copy without haveing to deal with special serialization libs or similar in C/C++.</p>
